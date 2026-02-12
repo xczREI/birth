@@ -1,0 +1,172 @@
+CREATE DATABASE IF NOT EXISTS geronacris;
+USE geronacris;
+
+CREATE TABLE admission_paternity_tbl (
+  registry_no varchar(50) NOT NULL,
+  father_name varchar(100) NOT NULL,
+  mother_name varchar(100) NOT NULL,
+  child_name varchar(100) NOT NULL,
+  birth_date varchar(30) NOT NULL,
+  birth_place varchar(100) NOT NULL,
+  sworn_day varchar(30) NOT NULL,
+  sworn_month varchar(30) NOT NULL,
+  sworn_year varchar(4) NOT NULL,
+  child_gender varchar(5) NOT NULL,
+  ctc varchar(50) NOT NULL,
+  issued_on varchar(50) NOT NULL,
+  issued_at varchar(100) NOT NULL,
+  administer_name varchar(100) NOT NULL,
+  administer_position varchar(100) NOT NULL,
+  administer_address varchar(100) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE att_inf_tbl (
+  registry_no varchar(50) NOT NULL,
+  attendant_type varchar(50) NOT NULL,
+  birth_time varchar(10) NOT NULL,
+  attendant_name varchar(100) NOT NULL,
+  attendant_position varchar(100) NOT NULL,
+  attendant_address varchar(100) NOT NULL,
+  informant_name varchar(100) NOT NULL,
+  rel_child varchar(50) NOT NULL,
+  informant_address varchar(100) NOT NULL,
+  prepared_name varchar(100) NOT NULL,
+  prepared_position varchar(100) NOT NULL,
+  attendant_date varchar(50) NOT NULL,
+  informant_date varchar(50) NOT NULL,
+  prepared_date varchar(50) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE child_tbl (
+  registry_no varchar(50) NOT NULL,
+  child_lname varchar(100) NOT NULL,
+  child_fname varchar(100) NOT NULL,
+  child_mname varchar(100) NOT NULL,
+  child_sex varchar(10) NOT NULL,
+  child_birth_date varchar(255) NOT NULL,
+  birth_brgy varchar(100) NOT NULL,
+  birth_municipal varchar(100) NOT NULL,
+  birth_province varchar(100) NOT NULL,
+  birth_type varchar(100) NOT NULL,
+  if_multi_birth_was varchar(100) NOT NULL,
+  birth_order varchar(100) NOT NULL,
+  birth_weight varchar(11) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE father_tbl (
+  registry_no varchar(50) NOT NULL,
+  father_lname varchar(100) NOT NULL,
+  father_fname varchar(100) NOT NULL,
+  father_mname varchar(100) NOT NULL,
+  father_age varchar(11) NOT NULL,
+  father_religion varchar(100) NOT NULL,
+  father_citizen varchar(100) NOT NULL,
+  father_brgy varchar(100) NOT NULL,
+  father_municipal varchar(100) NOT NULL,
+  father_province varchar(100) NOT NULL,
+  father_country varchar(100) NOT NULL,
+  father_occupation varchar(100) NOT NULL,
+  marriage_date date NOT NULL,
+  marriage_place varchar(100) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE late_reg_tbl (
+  registry_no varchar(50) NOT NULL,
+  late_name varchar(100) NOT NULL,
+  late_address varchar(100) NOT NULL,
+  late_birth_type varchar(50) NOT NULL,
+  late_birth_of varchar(100) NOT NULL,
+  late_birth_in varchar(100) NOT NULL,
+  late_birth_on varchar(100) NOT NULL,
+  attend_birth_by varchar(100) NOT NULL,
+  who_resides_at varchar(100) NOT NULL,
+  late_citizen varchar(100) NOT NULL,
+  married_type varchar(50) NOT NULL,
+  married_on varchar(20) NOT NULL,
+  married_at varchar(100) NOT NULL,
+  not_married_name varchar(100) NOT NULL,
+  late_reg_reason varchar(500) NOT NULL,
+  applicant_only varchar(100) NOT NULL,
+  applicant_than_owner varchar(100) NOT NULL,
+  sign_day varchar(30) NOT NULL,
+  sign_month varchar(30) NOT NULL,
+  sign_year varchar(4) NOT NULL,
+  sign_at varchar(100) NOT NULL,
+  affiant_name varchar(100) NOT NULL,
+  late_sworn_day varchar(10) NOT NULL,
+  late_sworn_month varchar(20) NOT NULL,
+  late_sworn_year varchar(4) NOT NULL,
+  late_sworn_at varchar(100) NOT NULL,
+  late_ctc varchar(50) NOT NULL,
+  late_issued_on varchar(30) NOT NULL,
+  late_issued_at varchar(100) NOT NULL,
+  late_administer_name varchar(100) NOT NULL,
+  late_administer_position varchar(100) NOT NULL,
+  late_administer_address varchar(100) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE mother_tbl (
+  registry_no varchar(50) NOT NULL,
+  mother_lname varchar(100) NOT NULL,
+  mother_fname varchar(100) NOT NULL,
+  mother_mname varchar(100) NOT NULL,
+  mother_citizen varchar(100) NOT NULL,
+  mother_religion varchar(100) NOT NULL,
+  mother_brgy varchar(100) NOT NULL,
+  mother_municipal varchar(100) NOT NULL,
+  mother_province varchar(100) NOT NULL,
+  mother_country varchar(100) NOT NULL,
+  mother_occupation varchar(100) NOT NULL,
+  mother_age varchar(11) NOT NULL,
+  ttl_no_child int(11) NOT NULL,
+  no_child_dead int(11) NOT NULL,
+  no_child_alive int(11) NOT NULL,
+  marriage_date varchar(50) NOT NULL,
+  marriage_place varchar(100) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE no_tbl (
+  No int(11) NOT NULL AUTO_INCREMENT,
+  registry_no varchar(50) NOT NULL,
+  status int(11) NOT NULL,
+  PRIMARY KEY (No)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE receive_civil_tbl (
+  registry_no varchar(50) NOT NULL,
+  received_name varchar(100) NOT NULL,
+  received_position varchar(100) NOT NULL,
+  civil_name varchar(100) NOT NULL,
+  civil_position varchar(100) NOT NULL,
+  received_date varchar(50) NOT NULL,
+  civil_date varchar(50) NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE registration_tbl (
+  registry_no varchar(50) NOT NULL,
+  book_no int(11) DEFAULT NULL,
+  page_no int(11) DEFAULT NULL,
+  province varchar(100) NOT NULL,
+  municipal varchar(100) NOT NULL,
+  reg_date date NOT NULL,
+  reg_time varchar(20) NOT NULL,
+  reg_user varchar(100) NOT NULL,
+  update_date date NOT NULL,
+  update_time varchar(20) NOT NULL,
+  update_user varchar(100) NOT NULL,
+  no int(11) NOT NULL,
+  PRIMARY KEY (registry_no)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE remarks_tbl (
+  registry_no varchar(50) NOT NULL,
+  remarks text NOT NULL,
+  no int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
