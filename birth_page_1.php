@@ -266,17 +266,17 @@ include 'mycon.php';
 							<strong>14. FATHER</strong>
 						<div style="flex: 1; display: flex; flex-direction: column;">
 							<span class="label-green">(First)</span>
-							<input type="text" name="mother_brgy" class="form-control form-control-sm" id="mother_brgy">
+							<input type="text" name="father_fname" class="form-control form-control-sm" id="father_fname">
 						</div>
 
 						<div style="flex: 1; display: flex; flex-direction: column;">
 							<span class="label-green">(Middle)</span>
-							<input type="text" name="mother_city" class="form-control form-control-sm" id="mother_city">
+							<input type="text" name="father_mname" class="form-control form-control-sm" id="father_mname">
 						</div>
 
 						<div style="flex: 1; display: flex; flex-direction: column;">
 								<span class="label-green">(Last)</span>
-								<input type="text" name="mother_province" class="form-control form-control-sm" id="mother_province">
+								<input type="text" name="father_lname" class="form-control form-control-sm" id="father_lname">
 							</div>
 						</div>
 				</div>
@@ -405,26 +405,17 @@ include 'mycon.php';
 			$('#child_mname').on('keydown', function(e) {
 				if (e.key === "Enter") {
 					e.preventDefault(); 
-					// Copy the value
 					$('#mother_lname').val($(this).val());
-					
-					// Move cursor to Child's Last Name (the next logical step)
 					$('#child_lname').focus(); 
 				}
 			});
-
-			// 2. Copy Child's Last Name -> Father's Last Name
 			$('#child_lname').on('keydown', function(e) {
 				if (e.key === "Enter") {
 					e.preventDefault(); 
-					// Copy the value
 					$('#father_lname').val($(this).val());
-					
-					// Move cursor to Father's Last Name so you can verify it copied
 					$('#child_lname').focus(); 
 				} 
 			});
-
 		});
 </script>
                        
