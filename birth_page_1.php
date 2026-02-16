@@ -146,21 +146,25 @@ include 'mycon.php';
 										<input type="text" name="child_lname" class="form-control form-control-sm" id="child_lname">
 									</div>
 								</div>
-				</div>
-            <div class="flex-row-form">
-                <div class="flex-col-form">
+				</div>	
+           <div class="flex-row-form">
+				<div class="flex-col-form">
 					<div>
-                    <strong>2. SEX</strong> <span style="color:green; text-align:justify;">(Male/Female)</span>
-                    <select name="sex" class="form-control form-control-sm"><option value="Male">Male</option><option value="Female">Female</option></select>
-					</div>	
-				</div>
-                <div class="flex-col-form" style="flex: 2;">
-                    <div>
-						<strong>3. DATE OF BIRTH</strong> <span class="label-green" style="display:inline;">(Day - Month - Year)</span>
-                    	<input type="text" name="birth_day" class="form-control form-control-sm" placeholder="e.g. 9-5-2025">
+						<strong class="mr-1">2. SEX</strong> 
+						<span style="color:green;">(Male/Female)</span>
 					</div>
+					<input type="text" name="sex" class="form-control form-control-sm">
 				</div>
-            </div>
+
+				<div class="flex-col-form" style="flex: 2;">
+					<div>
+						<strong class="mr-1">3. DATE OF BIRTH</strong> 
+						<span class="label-green" style="display:inline;">(Day - Month - Year)</span>
+					</div>
+					<input type="text" name="birth_day" class="form-control form-control-sm" placeholder="e.g. 9-5-2025">
+				</div>
+			</div>
+
             <div class="flex-row-form">
                 <div class="flex-col-form" style="flex: 0.8;"><strong>4. PLACE OF BIRTH</strong></div>
                 <div class="flex-col-form" style="flex: 2;">
@@ -178,12 +182,12 @@ include 'mycon.php';
             </div>
 
 			<div class="flex-row-form">
-                <div class="flex-col-form" style="flex: 0.8;"><strong> 5a. TYPE OF BIRTH</strong>
+                <div class="flex-col-form" style="flex: 0.4;"><strong> 5a. TYPE OF BIRTH</strong>
 					<span class="label-5green">(Single, Twin, Triplet, etc)</span>
 					<input type="text" name="birth_brgy" class="form-control form-control-sm">
 				</div>
 				
-                <div class="flex-col-form" style="flex: 0.8;"><strong> 5b. IF MULTIPLE CHILD WAS</strong>
+                <div class="flex-col-form" style="flex: 0.4;"><strong> 5b. IF MULTIPLE BIRTH, CHILD WAS</strong>
 					<span class="label-5green">
 						(First, Second, Third, etc)</span>
 					<input type="text" name="birth_brgy" class="form-control form-control-sm">
@@ -199,8 +203,12 @@ include 'mycon.php';
 					</div>
 				</div>
 
-                <div class="flex-col-form" style="flex: 0.8;"><strong> 6. WEIGHT AT BIRTH</strong>
-					<input type="text" name="birth_brgy" class="form-control form-control-sm" value="2000"> grams
+                <div class="flex-col-form" style="flex: 0.4;">
+					<strong>6. WEIGHT AT BIRTH</strong>
+					<div class="d-flex align-items-baseline mt-auto">
+						<input type="text" name="birth_weight" class="form-control form-control-sm text-center" value="2000">
+						<span class="ml-2">grams</span>
+					</div>
 				</div>
             </div>
         </div>
@@ -210,12 +218,26 @@ include 'mycon.php';
         <div class="sidebar-label">M<br>O<br>T<br>H<br>E<br>R</div>
         <div class="flex-fill">
 
-            <div class="flex-row-form">
-                <div class="flex-col-form" style="flex: 0.5;"><strong>7. MAIDEN NAME</strong></div>
-                <div class="flex-col-form"><span class="label-green">(First)</span><input type="text" name="mother_fname" class="form-control form-control-sm"></div>
-                <div class="flex-col-form"><span class="label-green">(Middle)</span><input type="text" name="mother_mname" class="form-control form-control-sm"></div>
-                <div class="flex-col-form"><span class="label-green">(Last)</span><input type="text" name="mother_lname" class="form-control form-control-sm" id="mother_lname"></div>
-            </div>
+				<div class="flex-row-form" style="border-bottom: 2px solid green !important;">                             
+				<div style="display: flex; gap: 10px; width: 100%; align-items: baseline; padding: 4px;">
+					<strong style="white-space: nowrap;">7. MAIDEN NAME</strong>
+					
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green text-center" style="font-style: italic;">(First)</span>
+						<input type="text" name="mother_fname" class="form-control form-control-sm text-center">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green text-center" style="font-style: italic;">(Middle)</span>
+						<input type="text" name="mother_mname" class="form-control form-control-sm text-center">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green text-center" style="font-style: italic;">(Last)</span>
+						<input type="text" name="mother_lname" class="form-control form-control-sm text-center" id="mother_lname">
+					</div>
+				</div>
+			</div>
 
             <div class="flex-row-form">
                 <div class="flex-col-form"><strong>8. CITIZENSHIP</strong><input type="text" list="citizen_list" name="mother_citizen" value="FILIPINO" class="form-control form-control-sm"></div>
@@ -237,21 +259,21 @@ include 'mycon.php';
 									<strong>13. RESIDENCE</strong>
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(House No., St., Barangay)</span>
-										<input type="text" name="mother_brgy" class="form-control form-control-sm" id="mother_brgy">
+										<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="mother_brgy">
 									</div>
 
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(City/Municipality)</span>
-										<input type="text" name="mother_city" class="form-control form-control-sm" id="mother_city">
+										<input type="text" name="mother_city" class="form-control form-control-sm text-center" id="mother_city">
 									</div>
 
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(Province)</span>
-										<input type="text" name="mother_province" class="form-control form-control-sm" id="mother_province">
+										<input type="text" name="mother_province" class="form-control form-control-sm text-center" id="mother_province">
 									</div>
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(City)</span>
-										<input type="text" name="mother_country" class="form-control form-control-sm" id="mother_country">
+										<input type="text" name="mother_country" class="form-control form-control-sm text-center" id="mother_country">
 									</div>
 								</div>
 				</div>
@@ -266,23 +288,23 @@ include 'mycon.php';
 							<strong>14. FATHER</strong>
 						<div style="flex: 1; display: flex; flex-direction: column;">
 							<span class="label-green">(First)</span>
-							<input type="text" name="father_fname" class="form-control form-control-sm" id="father_fname">
+							<input type="text" name="father_fname" class="form-control form-control-sm text-center" id="father_fname">
 						</div>
 
 						<div style="flex: 1; display: flex; flex-direction: column;">
 							<span class="label-green">(Middle)</span>
-							<input type="text" name="father_mname" class="form-control form-control-sm" id="father_mname">
+							<input type="text" name="father_mname" class="form-control form-control-sm text-center" id="father_mname">
 						</div>
 
 						<div style="flex: 1; display: flex; flex-direction: column;">
 								<span class="label-green">(Last)</span>
-								<input type="text" name="father_lname" class="form-control form-control-sm" id="father_lname">
+								<input type="text" name="father_lname" class="form-control form-control-sm text-center" id="father_lname">
 							</div>
 						</div>
 				</div>
             <div class="flex-row-form">
                 <div class="flex-col-form"><strong>15. CITIZENSHIP</strong><input type="text" list="citizen_list" name="father_citizen" value="FILIPINO" class="form-control form-control-sm"></div>
-                <div class="flex-col-form"><strong>16. RELIGION/RELIGIOUS SECTSS</strong><input type="text" list="religious_sect" name="father_sect" class="form-control form-control-sm"></div>
+                <div class="flex-col-form"><strong>16. RELIGION/RELIGIOUS SECTS</strong><input type="text" list="religious_sect" name="father_sect" class="form-control form-control-sm"></div>
                 <div class="flex-col-form"><strong>17. OCCUPATION</strong><input type="text" list="occupation_list" name="father_occupation" class="form-control form-control-sm"></div>
                 <div class="flex-col-form" style="flex: 0.7;"><strong>18. AGE at the time of this birth</strong><span class="label-green">(completed years)</span><input type="text" name="father_age" value="N/A" class="form-control form-control-sm" style="text-align:center;"></div>
             </div>
@@ -291,21 +313,21 @@ include 'mycon.php';
 									<strong>19. RESIDENCE</strong>
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(House No., St., Barangay)</span>
-										<input type="text" name="mother_brgy" class="form-control form-control-sm" id="mother_brgy">
+										<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="mother_brgy">
 									</div>
 
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(City/Municipality)</span>
-										<input type="text" name="mother_city" class="form-control form-control-sm" id="mother_city">
+										<input type="text" name="mother_city" class="form-control form-control-sm text-center" id="mother_city">
 									</div>
 
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(Province)</span>
-										<input type="text" name="mother_province" class="form-control form-control-sm" id="mother_province">
+										<input type="text" name="mother_province" class="form-control form-control-sm text-center" id="mother_province">
 									</div>
 									<div style="flex: 1; display: flex; flex-direction: column;">
 										<span class="label-green">(City)</span>
-										<input type="text" name="mother_country" class="form-control form-control-sm" id="mother_country">
+										<input type="text" name="mother_country" class="form-control form-control-sm text-center" id="mother_country">
 									</div>
 					</div>
 				</div>
@@ -326,17 +348,17 @@ include 'mycon.php';
 				<strong>20a. PLACE</strong>
 					<div style="flex: .4; display: flex; flex-direction: column;">
 						<span class="label-green">(Month)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm" id="marriage_place">
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
 					</div>
 
 					<div style="flex: .4; display: flex; flex-direction: column;">
 						<span class="label-green">(Day)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm" id="marriage_place">
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
 					</div>
 
 					<div style="flex: .4; display: flex; flex-direction: column;">
 						<span class="label-green">(Year)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm" id="marriage_place">
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
 					</div>
 
 				</div>	
@@ -348,17 +370,17 @@ include 'mycon.php';
 
 					<div style="flex: 1; display: flex; flex-direction: column;">
 						<span class="label-green">(City/Municipality)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm" id="marriage_place">
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
 					</div>
 
 					<div style="flex: 1; display: flex; flex-direction: column;">
 						<span class="label-green">(Province)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm" id="marriage_place">
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
 					</div>
 
 					<div style="flex: 1; display: flex; flex-direction: column;">
 						<span class="label-green">(City)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm" id="marriage_place">
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
 					</div>
 				
 			</div>
