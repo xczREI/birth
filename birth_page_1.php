@@ -345,7 +345,7 @@ include 'mycon.php';
 		<div class="flex-col-form">
 			<div>
                 <div style="display: flex;">
-				<strong>20a. PLACE</strong>
+				<strong>20a. DATES</strong>
 					<div style="flex: .4; display: flex; flex-direction: column;">
 						<span class="label-green">(Month)</span>
 						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
@@ -366,7 +366,7 @@ include 'mycon.php';
 		</div>
         <div class="flex-col-form" style="flex: 1.7; ">								
 			<div style="display: flex;">
-				<strong>20b. DATE</strong>
+				<strong>20b. PLACE</strong>
 
 					<div style="flex: 1; display: flex; flex-direction: column;">
 						<span class="label-green">(City/Municipality)</span>
@@ -385,8 +385,46 @@ include 'mycon.php';
 				
 			</div>
 		</div>
-
 	</div>
+	<div class="flex-row-form" style="flex-direction: column; padding: 5px;">
+    <div style="margin-bottom: 5px;">
+        <strong>21a. ATTENDANT</strong>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+        
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant1" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>1. Physician</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant2" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>2. Nurse</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant3" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>3. Midwife</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant4" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>4. Hilot (Traditional Birth Attendant)</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant5" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>5. Others (Specify)</span>
+        </div>
+
+    </div>
+</div>
 
     <div class="flex-row-form flex-column p-2">
         <strong>21b. CERTIFICATION OF ATTENDANT AT BIRTH</strong>

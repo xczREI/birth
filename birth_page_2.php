@@ -409,51 +409,52 @@
 
 <<script>
 $(document).ready(function() {
-    // This master listener handles the "Enter" key reflection
     $(document).on('keydown', 'input', function(e) {
         if (e.key === "Enter") {
-            // 1. Sync Child's Full Name to Affidavit and Late Registration
+            // Prevent default form submission if necessary
+            // e.preventDefault();
+
+            // 1. Sync Child's Full Name
             var cf = $('#child_fname').val() || '';
             var cm = $('#child_mname').val() || '';
             var cl = $('#child_lname').val() || '';
             var fullChild = (cf + " " + cm + " " + cl).trim().toUpperCase();
-            $('#child_name').val(fullChild);
-            $('#childlatename').val(fullChild);
+            // Targets the ID in your snippet
+            $('#child_name').val(fullChild); 
 
             // 2. Sync Father's Full Name
             var ff = $('#father_fname').val() || '';
             var fm = $('#father_mname').val() || '';
             var fl = $('#father_lname').val() || '';
             var fullFather = (ff + " " + fm + " " + fl).trim().toUpperCase();
-            $('#father_name').val(fullFather);
-            $('#father_sign').val(fullFather);
-            $('#ack_father_sworn').val(fullFather);
-            $('#not_married_txt').val(fullFather);
+            // Targets IDs: father_name, father_sign, ack_father_sworn
+            $('#father_name, #father_sign, #ack_father_sworn').val(fullFather);
 
             // 3. Sync Mother's Full Name
             var mf = $('#mother_fname').val() || '';
             var mm = $('#mother_mname').val() || '';
             var ml = $('#mother_lname').val() || '';
             var fullMother = (mf + " " + mm + " " + ml).trim().toUpperCase();
-            $('#mother_name').val(fullMother);
-            $('#mother_sign').val(fullMother);
-            $('#ack_mother_sworn').val(fullMother);
+            // Targets IDs: mother_name, mother_sign, ack_mother_sworn
+            $('#mother_name, #mother_sign, #ack_mother_sworn').val(fullMother);
 
-            // 4. Sync Birth Place
+            // 4. Sync Birth Date (Formats 9-5-2025 to 9 MAY 2025)
+            var rawBirth = $('#birth_day').val() || ''; 
+            if(rawBirth.includes('-')) {
+                var parts = rawBirth.split('-');
+                var months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
+                var formattedBirth = parts[0] + " " + months[parseInt(parts[1]) - 1] + " " + parts[2];
+                // Targets the ID in your snippet: birth_date
+                $('#birth_date').val(formattedBirth.toUpperCase());
+            }
+
+            // 5. Sync Birth Place (Barangay, City, Province)
             var bBrgy = $('#birth_brgy').val() || '';
             var bCity = $('#birth_city').val() || '';
             var bProv = $('#birth_province').val() || '';
             var fullPlace = (bBrgy + ", " + bCity + ", " + bProv).trim().toUpperCase();
+            // Targets the ID in your snippet: birth_place
             $('#birth_place').val(fullPlace);
-            $('#bplace1').val(fullPlace);
-            $('#bplace2').val(fullPlace);
-
-            // 5. Sync Informant to Delayed Registration
-            var infName = $('#informant_name').val() || '';
-            var infAddr = $('#informant_address').val() || '';
-            $('#late_name').val(infName.toUpperCase());
-            $('#affiant_name').val(infName.toUpperCase());
-            $('#late_address').val(infAddr.toUpperCase());
         }
     });
 });
