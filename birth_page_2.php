@@ -1,28 +1,86 @@
-<style>
-	/* Global font size 10 as requested by client */
-	.ctf-birth-back, .ctf-birth-back * {
-		font-size: 10px !important;
-	}
-	.ctf-birth-back h4 {
-		font-size: 12px !important;
-	}
-	.ctf-birth-back h6 {
-		font-size: 10px !important;
-	}
-	.ctf-birth-back input, 
-	.ctf-birth-back select, 
-	.ctf-birth-back textarea,
-	.ctf-birth-back label,
-	.ctf-birth-back span,
-	.ctf-birth-back option {
-		font-size: 10px !important;
-	}
-	/* Header styling */
-	.ctf-birth-back .affidavit-title {
-		font-size: 16px !important;
-		font-weight: bold;
-	}
-</style>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+			<style>
+			/* Global font settings */
+			.ctf-birth, .ctf-birth * {
+				font-size: 10px !important;
+				color: #000;
+				box-sizing: border-box; /* Ensures padding doesn't break width */
+			}
+			.ctf-birth {
+				width: 960px;
+				margin: 20px auto;
+				background-color: #fff;
+				border: 2px solid green;
+			}
+			
+			/* Layout Utilities */
+			.flex-row-form { display: flex; width: 100%; border-bottom: 2px solid green; }
+			.flex-row-form:last-child { border-bottom: none; }
+			
+			/* MODIFIED: Flex Column Layout for Cells */
+			.flex-col-form { 	
+				flex: 1; 
+				border-right: 2px solid green; 
+				padding: 4px; 
+				min-height: 45px; 
+				
+				/* This fixes the overlap issue: */
+				display: flex;            
+				flex-direction: column;   /* Stacks text on top, input on bottom */
+				justify-content: space-between; /* Pushes them apart */
+			}
+			.flex-col-form:last-child { border-right: none; }
+			
+			/* Section Headings (SIDEBAR) */
+			.sidebar-label {
+				width: 35px;
+				background-color: #fff;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-weight: bold;
+				font-size: 14px !important;
+				text-align: center;
+				border-right: 2px solid green;
+				line-height: 1.5;
+				flex: 0 0 3.5% !important;
+				max-width: 3.5%;    
+			}
+
+			/* Input Styling */
+			.header-title { font-size: 24px !important; font-weight: bold; margin: 0; }
+			.label-green { color: green; font-style: italic; display: block; text-align: center; }
+			.label-5green { color: green; font-style: italic; display: block; text-align: left; }
+			.label-5cgreen { color: green; font-style: italic; display: inline; text-align: left; }
+			.bg-cyan { background-color: #7FFFD4 !important; }
+			
+			.form-control-sm { 
+				border-bottom: 1px solid green !important;
+				box-shadow: none !important;
+				outline: none !important;	
+			}
+
+			/* --- FIX: PUSH INPUT TO BOTTOM SAFELY --- */
+			.flex-col-form .form-control-sm {
+				margin-top: auto; /* Acts like a spring, pushing input to the bottom */
+			}
+
+			/* Grid for Bottom "Filled Up" section */
+			.box-grid {
+				display: grid;
+				grid-template-columns: repeat(30, 1fr);
+				border: 1px solid #000;
+				margin-top: 5px;
+			}
+			.box-grid div {
+				border-right: 1px solid #000;
+				height: 20px;
+				text-align: center;
+				line-height: 20px;
+			}
+			.box-grid div:last-child { border-right: none; }
+		</style>
 
 <div class="ctf-birth-back pt-3" style="width:960px;margin: auto;">
 	<!--birth form-->

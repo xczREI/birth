@@ -421,7 +421,7 @@ include 'mycon.php';
 					$('#father_lname').val($(this).val());
 					
 					// Move cursor to Father's Last Name so you can verify it copied
-					$('#father_lname').focus(); 
+					$('#child_lname').focus(); 
 				} 
 			});
 
