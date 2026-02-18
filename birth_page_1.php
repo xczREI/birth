@@ -427,9 +427,14 @@ include 'mycon.php';
 </div>
 
     <div class="flex-row-form flex-column p-2">
+		<div>
         <strong>21b. CERTIFICATION OF ATTENDANT AT BIRTH</strong>
+		<span class="label-5cgreen">
+					(Physician, Nurse, Midwife, Traditional Birth Attendant/Hilot, etc.)
+				</span>
+		</div>
         <p class="m-0">I hereby certify that I attended the birth of the child who was born alive at 
-            <input type="time" name="birth_time" style="border:none; border-bottom:1px solid #000; width:80px;"> am/pm on the date specified above.
+            <input type="text" name="birth_time" style="border:none; border-bottom:1px solid #000; width:80px;"> am/pm on the date specified above.
         </p>
         <div class="d-flex mt-2">
             <div class="flex-fill mr-2">
@@ -442,6 +447,51 @@ include 'mycon.php';
                 <label class="m-0">Date:</label><input type="text" name="attendant_date" value="<?php echo strtoupper(date('F j, Y')); ?>" class="form-control form-control-sm">
             </div>
         </div>
+		<div class="flex-row-form">
+		<div class="flex-col-form">
+			<div>
+                <div style="display: flex;">
+				<strong>22. DATES</strong>
+					<div style="flex: .4; display: flex; flex-direction: column;">
+						<span class="label-green">(Month)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: .4; display: flex; flex-direction: column;">
+						<span class="label-green">(Day)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: .4; display: flex; flex-direction: column;">
+						<span class="label-green">(Year)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+				</div>	
+			</div>
+		</div>
+        <div class="flex-col-form" style="flex: 1.7; ">								
+			<div style="display: flex;">
+				<strong>23. PLACE</strong>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(City/Municipality)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(Province)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(City)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+				
+			</div>
+		</div>
+	</div>
     </div>
 
     <div class="flex-row-form flex-column p-2" style="background-color: #f9f9f9;">
