@@ -505,7 +505,7 @@ include 'mycon.php'; ?>
 									</div>
 					</div>
 				</div>
-<<<<<<< HEAD
+				<<<<<<< HEAD
 				<div class="col" style="border:2px solid green; border-left:none; border-top:none;">
 					<div class="row">
 						<div class="col-1">
@@ -881,7 +881,7 @@ include 'mycon.php'; ?>
 			<div class="row" style="border: 2px solid green; border-top: none;">
     <div class="col p-2">
         <h6 style="font-weight:bold;">TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</h6>
-=======
+
         </div>
 
     </div>
@@ -943,7 +943,7 @@ include 'mycon.php'; ?>
     </div>
 
     <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
->>>>>>> 5a0e17319cb730845abd179c9d75083579fe6354
+		>>>>>>> 5a0e17319cb730845abd179c9d75083579fe6354
         
         <div style="display: flex; font-weight: bold; margin-bottom: 2px; padding-left: 5px;">
             <div style="width: 7%;">8</div>
@@ -1000,7 +1000,7 @@ include 'mycon.php'; ?>
 			
 		</div>
 	</div>
-<<<<<<< HEAD
+	<<<<<<< HEAD
 =======
     </div>
 
@@ -1017,7 +1017,6 @@ include 'mycon.php'; ?>
     </div>
 </div>
 >>>>>>> 5a0e17319cb730845abd179c9d75083579fe6354
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 				$(document).ready(function() {
