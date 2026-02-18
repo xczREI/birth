@@ -975,6 +975,171 @@ include 'mycon.php';
 			</div><!--close col-->		
 		</div>
 	</div>
+<<<<<<< HEAD
+		
+	<div class="flex-row-form">
+		<div class="flex-col-form">
+			<div>
+                <div style="display: flex;">
+				<strong>20a. DATES</strong>
+					<div style="flex: .4; display: flex; flex-direction: column;">
+						<span class="label-green">(Month)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: .4; display: flex; flex-direction: column;">
+						<span class="label-green">(Day)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: .4; display: flex; flex-direction: column;">
+						<span class="label-green">(Year)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+				</div>	
+			</div>
+		</div>
+        <div class="flex-col-form" style="flex: 1.7; ">								
+			<div style="display: flex;">
+				<strong>20b. PLACE</strong>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(City/Municipality)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(Province)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(City)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="flex-row-form" style="flex-direction: column; padding: 5px;">
+    <div style="margin-bottom: 5px;">
+        <strong>21a. ATTENDANT</strong>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+        
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant1" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>1. Physician</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant2" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>2. Nurse</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant3" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>3. Midwife</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant4" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>4. Hilot (Traditional Birth Attendant)</span>
+        </div>
+
+        <div class="d-flex align-items-center">
+            <input type="text" class="form-control form-control-sm text-center" name="attendant5" 
+                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
+            <span>5. Others (Specify)</span>
+        </div>
+
+    </div>
+</div>
+
+    <div class="flex-row-form flex-column p-2">
+		<div>
+        <strong>21b. CERTIFICATION OF ATTENDANT AT BIRTH</strong>
+		<span class="label-5cgreen">
+					(Physician, Nurse, Midwife, Traditional Birth Attendant/Hilot, etc.)
+				</span>
+		</div>
+        <p class="m-0">I hereby certify that I attended the birth of the child who was born alive at 
+            <input type="text" name="birth_time" style="border:none; border-bottom:1px solid #000; width:80px;"> am/pm on the date specified above.
+        </p>
+        <div class="d-flex mt-2">
+            <div class="flex-fill mr-2">
+                <label class="m-0">Signature:</label><div style="border-bottom:1px solid green; height:15px;"></div>
+                <label class="m-0">Name in Print:</label><input type="text" name="attendant_name" class="form-control form-control-sm">
+                <label class="m-0">Title or Position:</label><input type="text" list="attendant_position_list" name="attendant_position" class="form-control-sm form-control">
+            </div>
+            <div class="flex-fill">
+                <label class="m-0">Address:</label><input type="text" name="attendant_address1" class="form-control form-control-sm mb-1">
+                <label class="m-0">Date:</label><input type="text" name="attendant_date" value="<?php echo strtoupper(date('F j, Y')); ?>" class="form-control form-control-sm">
+            </div>
+        </div>
+
+		<div class="flex-row-form" style="flex: 1; border-top: 2px solid green !important;">	
+		<div class="flex-col-form" >
+			<div>
+                <div style="display: flex;">
+				<strong>22. CERTIFICATE OF INFORMANT</strong>
+				<span>i hereby certify that all information supplied are true and correct to my own knowledge and belief.</span>
+					 <div class="flex-fill mr-2">
+                <label class="m-0">Signature:</label><div style="border-bottom:1px solid green; height:15px;"></div>
+                <label class="m-0">Name in Print:</label><input type="text" name="informant_name" class="form-control form-control-sm">
+                <label class="m-0">Relationship to the Child:</label><input type="text"  name="rel-child" class="form-control form-control-sm">
+				<label class="m-0">Address:</label><input type="text" name="informant">
+				<label class="m-0">Date:</label><input>
+            </div>
+
+
+				</div>	
+			</div>
+		</div>
+        <div class="flex-col-form" style="flex: 1; ">								
+			<div style="display: flex;">
+				<strong>23. PLACE</strong>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(City/Municipality)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(Province)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+
+					<div style="flex: 1; display: flex; flex-direction: column;">
+						<span class="label-green">(City)</span>
+						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
+					</div>
+				
+			</div>
+		</div>
+	</div>
+    </div>
+
+    <div class="flex-row-form flex-column p-2" style="background-color: #f9f9f9;">
+        <strong>REMARKS/ANNOTATIONS (For LCRO/OCRG Use Only)</strong>
+        <textarea name="remarks" class="w-100" style="height: 60px; border:1px solid #ccc;"></textarea>
+    </div>
+
+    <div class="p-2">
+        <strong>TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</strong>
+        <div class="box-grid">
+            <?php for($i=0; $i<30; $i++) echo "<div></div>"; ?>
+        </div>
+    </div>
+</div>
+=======
+>>>>>>> 893f2d5cecd333e491b78959e3b87502e292b46f
 
 	<!-- Javascript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
