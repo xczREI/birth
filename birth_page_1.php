@@ -161,7 +161,7 @@ include 'mycon.php';
 						<strong class="mr-1">3. DATE OF BIRTH</strong> 
 						<span class="label-green" style="display:inline;">(Day - Month - Year)</span>
 					</div>
-					<input type="text" name="birth_day" class="form-control form-control-sm" placeholder="e.g. 9-5-2025">
+					<input type="text" name="birth_day" class="form-control form-control-sm" placeholder="e.g. 9-5-2025" value="<?php echo date('j-n-Y'); ?>">
 				</div>
 			</div>
 
@@ -557,6 +557,20 @@ $(document).ready(function() {
     // Save every time the user types in these specific fields
     $('input').on('input', saveToMemory);
 });
+</script>
+
+<script>
+		// Listener to clear the entire field on a single Backspace press
+	$(document).on('keydown', 'input', function(e) {
+		if (e.key === "Backspace") {
+			// Clear the current input value immediately
+			$(this).val('');
+			
+			// Trigger the 'input' event to ensure Page 2 (Affidavit) 
+			// also clears the mirrored data in real-time
+			$(this).trigger('input');
+		}
+	});
 </script>
 
 </body>
