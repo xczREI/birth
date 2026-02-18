@@ -64,7 +64,7 @@
       $father_country = $conn->real_escape_string($_POST['father_country']);
 
       //====================================marriage_info===========================
-      $marriage_date = $_POST['marriage_date'];
+      $marriage_date = $_POST['marriage_date']; 
       $marriage_place = $conn->real_escape_string($_POST['marriage_place']);
 
       //=================attendant_informant_prepared===============================

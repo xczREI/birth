@@ -407,54 +407,47 @@
 	</div>
 </div>
 
-<<script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script> 
 $(document).ready(function() {
-    $(document).on('keydown', 'input', function(e) {
+    
+    function syncFromPage1() {
+        const rawData = localStorage.getItem('birth_form_data');
+        if (!rawData) {
+            alert("No data found from Page 1. Please type something in Page 1 first.");
+            return;
+        }
+
+        const data = JSON.parse(rawData);
+
+        // Fill Affidavit Fields
+        $('#child_name').val(data.child_fname + " " + data.child_mname + " " + data.child_lname);
+        $('#father_name').val(data.father_fname + " " + data.father_mname + " " + data.father_lname);
+        $('#mother_name').val(data.mother_fname + " " + data.mother_mname + " " + data.mother_lname);
+        
+        // Fill Signatures
+        $('#father_sign').val(data.father_fname + " " + data.father_mname + " " + data.father_lname);
+        $('#mother_sign').val(data.mother_fname + " " + data.mother_mname + " " + data.mother_lname);
+        
+        // Fill Sworn Names (using the IDs from your HTML)
+        $('#ack_father_sworn').val(data.father_fname + " " + data.father_lname);
+        $('#ack_mother_sworn').val(data.mother_fname + " " + data.mother_lname);
+
+        // Fill Birth Info
+        $('#birth_date').val(data.birth_day);
+        $('#birth_place').val(data.birth_place);
+        
+        // Fill Delayed Registration Name
+        $('#childlatename').val(data.child_fname + " " + data.child_mname + " " + data.child_lname);
+        
+        console.log("Data Pulled Successfully");
+    }
+
+    // Handle the Enter Key
+    $('input').on('keydown', function(e) {
         if (e.key === "Enter") {
-            // Prevent default form submission if necessary
-            // e.preventDefault();
-
-            // 1. Sync Child's Full Name
-            var cf = $('#child_fname').val() || '';
-            var cm = $('#child_mname').val() || '';
-            var cl = $('#child_lname').val() || '';
-            var fullChild = (cf + " " + cm + " " + cl).trim().toUpperCase();
-            // Targets the ID in your snippet
-            $('#child_name').val(fullChild); 
-
-            // 2. Sync Father's Full Name
-            var ff = $('#father_fname').val() || '';
-            var fm = $('#father_mname').val() || '';
-            var fl = $('#father_lname').val() || '';
-            var fullFather = (ff + " " + fm + " " + fl).trim().toUpperCase();
-            // Targets IDs: father_name, father_sign, ack_father_sworn
-            $('#father_name, #father_sign, #ack_father_sworn').val(fullFather);
-
-            // 3. Sync Mother's Full Name
-            var mf = $('#mother_fname').val() || '';
-            var mm = $('#mother_mname').val() || '';
-            var ml = $('#mother_lname').val() || '';
-            var fullMother = (mf + " " + mm + " " + ml).trim().toUpperCase();
-            // Targets IDs: mother_name, mother_sign, ack_mother_sworn
-            $('#mother_name, #mother_sign, #ack_mother_sworn').val(fullMother);
-
-            // 4. Sync Birth Date (Formats 9-5-2025 to 9 MAY 2025)
-            var rawBirth = $('#birth_day').val() || ''; 
-            if(rawBirth.includes('-')) {
-                var parts = rawBirth.split('-');
-                var months = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
-                var formattedBirth = parts[0] + " " + months[parseInt(parts[1]) - 1] + " " + parts[2];
-                // Targets the ID in your snippet: birth_date
-                $('#birth_date').val(formattedBirth.toUpperCase());
-            }
-
-            // 5. Sync Birth Place (Barangay, City, Province)
-            var bBrgy = $('#birth_brgy').val() || '';
-            var bCity = $('#birth_city').val() || '';
-            var bProv = $('#birth_province').val() || '';
-            var fullPlace = (bBrgy + ", " + bCity + ", " + bProv).trim().toUpperCase();
-            // Targets the ID in your snippet: birth_place
-            $('#birth_place').val(fullPlace);
+            e.preventDefault(); // Stop page from reloading
+            syncFromPage1();
         }
     });
 });

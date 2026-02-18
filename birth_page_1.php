@@ -161,25 +161,30 @@ include 'mycon.php';
 						<strong class="mr-1">3. DATE OF BIRTH</strong> 
 						<span class="label-green" style="display:inline;">(Day - Month - Year)</span>
 					</div>
-					<input type="text" name="birth_day" class="form-control form-control-sm" placeholder="e.g. 9-5-2025">
+					<input type="text" name="birth_day" class="form-control form-control-sm" placeholder="e.g. 9-5-2025" value="<?php echo date('j-n-Y'); ?>">
 				</div>
 			</div>
 
-            <div class="flex-row-form">
-                <div class="flex-col-form" style="flex: 0.8;"><strong>4. PLACE OF BIRTH</strong></div>
-                <div class="flex-col-form" style="flex: 2;">
-                    <span class="label-green">(Hospital/Barangay)</span>
-                    <input type="text" name="birth_brgy" class="form-control form-control-sm">
-                </div>
-                <div class="flex-col-form">
-                    <span class="label-green">(Municipality)</span>
-                    <input type="text" list="municipality_list" name="birth_city" value="GERONA" class="form-control form-control-sm">
-                </div>
-                <div class="flex-col-form">
-                    <span class="label-green">(Province)</span>
-                    <input type="text" list="province_list" name="birth_province" value="TARLAC" class="form-control form-control-sm">
-                </div>
-            </div>
+            <div class="flex-row-form" style="padding: 10px; border-bottom: 2px solid green !important;">                             
+			<div style="display: flex; gap: 10px; width: 100%; align-items: flex-start;">
+				<strong style="white-space: nowrap; margin-top: 5px;">4. PLACE OF BIRTH</strong>
+				
+				<div style="flex: 2; display: flex; flex-direction: column; align-items: center;">
+					<span class="label-green">(Hospital/Barangay)</span>
+					<input type="text" name="birth_brgy" class="form-control form-control-sm text-center">
+				</div>
+
+				<div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+					<span class="label-green">(Municipality)</span>
+					<input type="text" list="municipality_list" name="birth_city" value="GERONA" class="form-control form-control-sm text-center">
+				</div>
+
+				<div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+					<span class="label-green">(Province)</span>
+					<input type="text" list="province_list" name="birth_province" value="TARLAC" class="form-control form-control-sm text-center">
+				</div>
+			</div>
+			</div>
 
 			<div class="flex-row-form">
                 <div class="flex-col-form" style="flex: 0.4;"><strong> 5a. TYPE OF BIRTH</strong>
@@ -255,28 +260,28 @@ include 'mycon.php';
 			</div>
 			
 			<div class="flex-row-form" style="flex: 1; border-bottom: 2px solid green !important;">								
-								<div style="display: flex; gap: 10px; width: 100%; margin-top: auto;">
-									<strong>13. RESIDENCE</strong>
-									<div style="flex: 1; display: flex; flex-direction: column;">
-										<span class="label-green">(House No., St., Barangay)</span>
-										<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="mother_brgy">
-									</div>
+						<div style="display: flex; gap: 10px; width: 100%; margin-top: auto;">
+							<strong>13. RESIDENCE</strong>
+							<div style="flex: 1; display: flex; flex-direction: column;">
+							<span class="label-green">(House No., St., Barangay)</span>
+							<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="mother_brgy">
+					</div>
 
-									<div style="flex: 1; display: flex; flex-direction: column;">
-										<span class="label-green">(City/Municipality)</span>
-										<input type="text" name="mother_city" class="form-control form-control-sm text-center" id="mother_city">
-									</div>
+					<div style="flex: 1; display: flex; flex-direction: column;">
+							<span class="label-green">(City/Municipality)</span>
+							<input type="text" name="mother_city" class="form-control form-control-sm text-center" id="mother_city">
+					</div>
 
-									<div style="flex: 1; display: flex; flex-direction: column;">
-										<span class="label-green">(Province)</span>
-										<input type="text" name="mother_province" class="form-control form-control-sm text-center" id="mother_province">
-									</div>
-									<div style="flex: 1; display: flex; flex-direction: column;">
-										<span class="label-green">(City)</span>
-										<input type="text" name="mother_country" class="form-control form-control-sm text-center" id="mother_country">
-									</div>
-								</div>
-				</div>
+					<div style="flex: 1; display: flex; flex-direction: column;">
+							<span class="label-green">(Province)</span>
+							<input type="text" name="mother_province" class="form-control form-control-sm text-center" id="mother_province">
+					</div>
+					<div style="flex: 1; display: flex; flex-direction: column;">
+							<span class="label-green">(City)</span>
+							<input type="text" name="mother_country" class="form-control form-control-sm text-center" id="mother_country">
+						</div>
+					</div>
+			</div>
 		</div>
     </div>
 
@@ -447,30 +452,26 @@ include 'mycon.php';
                 <label class="m-0">Date:</label><input type="text" name="attendant_date" value="<?php echo strtoupper(date('F j, Y')); ?>" class="form-control form-control-sm">
             </div>
         </div>
-		<div class="flex-row-form">
-		<div class="flex-col-form">
+
+		<div class="flex-row-form" style="flex: 1; border-top: 2px solid green !important;">	
+		<div class="flex-col-form" >
 			<div>
                 <div style="display: flex;">
-				<strong>22. DATES</strong>
-					<div style="flex: .4; display: flex; flex-direction: column;">
-						<span class="label-green">(Month)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
+				<strong>22. CERTIFICATE OF INFORMANT</strong>
+				<span>i hereby certify that all information supplied are true and correct to my own knowledge and belief.</span>
+					 <div class="flex-fill mr-2">
+                <label class="m-0">Signature:</label><div style="border-bottom:1px solid green; height:15px;"></div>
+                <label class="m-0">Name in Print:</label><input type="text" name="informant_name" class="form-control form-control-sm">
+                <label class="m-0">Relationship to the Child:</label><input type="text"  name="rel-child" class="form-control form-control-sm">
+				<label class="m-0">Address:</label><input type="text" name="informant">
+				<label class="m-0">Date:</label><input>
+            </div>
 
-					<div style="flex: .4; display: flex; flex-direction: column;">
-						<span class="label-green">(Day)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: .4; display: flex; flex-direction: column;">
-						<span class="label-green">(Year)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
 
 				</div>	
 			</div>
 		</div>
-        <div class="flex-col-form" style="flex: 1.7; ">								
+        <div class="flex-col-form" style="flex: 1; ">								
 			<div style="display: flex;">
 				<strong>23. PLACE</strong>
 
@@ -529,6 +530,44 @@ include 'mycon.php';
 		});
 </script>
                        
+<script>
+$(document).ready(function() {
+    // Function to collect data from Page 1 and save to browser memory
+    function saveToMemory() {
+        const data = {
+            child_fname: $('#child_fname').val(),
+            child_mname: $('#child_mname').val(),
+            child_lname: $('#child_lname').val(),
+            father_fname: $('#father_fname').val(),
+            father_mname: $('#father_mname').val(),
+            father_lname: $('#father_lname').val(),
+            mother_fname: $('input[name="mother_fname"]').val(),
+            mother_mname: $('input[name="mother_mname"]').val(),
+            mother_lname: $('#mother_lname').val(),
+            birth_day: $('input[name="birth_day"]').val(),
+            birth_place: $('input[name="birth_brgy"]').val() + " " + $('input[name="birth_city"]').val()
+        };
+        localStorage.setItem('birth_form_data', JSON.stringify(data));
+    }
+
+    // Save every time the user types in these specific fields
+    $('input').on('input', saveToMemory);
+});
+</script>
+
+<script>
+		// Listener to clear the entire field on a single Backspace press
+	$(document).on('keydown', 'input', function(e) {
+		if (e.key === "Backspace") {
+			// Clear the current input value immediately
+			$(this).val('');
+			
+			// Trigger the 'input' event to ensure Page 2 (Affidavit) 
+			// also clears the mirrored data in real-time
+			$(this).trigger('input');
+		}
+	});
+</script>
 
 </body>
 </html>
