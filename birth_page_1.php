@@ -46,6 +46,44 @@ include 'mycon.php';
 		.editable-select input {
 			width: 100%;
 		}
+
+		/* Layout for the PSA Data Slots */
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.flex-container > div {
+    flex: 1;
+    border: 1px solid #000; /* Standard black border for PSA slots */
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove internal borders to create the "connected" look for sub-slots */
+.flex-container div:not(:last-child) {
+    border-right: none;
+}
+
+/* Specific groupings to create visual gaps between numbered sections */
+.section-gap {
+    margin-right: 5px;
+    border-right: 1px solid #000 !important;
+}
+
+/* Ensure inputs inside slots are clean and centered */
+.flex-container input {
+    border: none !important;
+    text-align: center;
+    width: 100%;
+    background-color: transparent;
+    font-weight: bold;
+}
+
 	</style>
 
 	<script type="text/javascript">
@@ -871,275 +909,65 @@ include 'mycon.php';
 				</div><!--close row-->
 			</div><!--close col-->
 			<!-- To be filled -->
-			<div class="row" style="border: 2px solid green;border-top:none;">
-				<div class="col">
-					<div class="row">
-						<div class="col">
-							<h6 style="padding-top:2px; font-weight:bold;">TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</h6>
-							<h6 style="margin-bottom: 0;">8&emsp;&emsp;&emsp;&nbsp;&nbsp;9&emsp;&emsp;&emsp;&nbsp;&nbsp;11&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;13&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;15&emsp;&emsp;&emsp;&nbsp;16&emsp;&emsp;&emsp;17&emsp;&emsp;&emsp;&emsp;&emsp;19</h6>
-							<div class="flex-container">
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="8a" disabled>
-								</div>
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="8b" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="9a" disabled>
-								</div>
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="9b" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="11a" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="11b" disabled>
-								</div> 
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="11c" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="13a" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="13b" disabled>
-								</div> 
-								<div>
-									<input type="text" class="form-control form-control-sm" name="13c" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="13d" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="13e" disabled>
-								</div> 
-								<div>
-									<input type="text" class="form-control form-control-sm" name="13f" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="13g" disabled>
-								</div>
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="13h" disabled>
-								</div> 
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="15a" disabled>
-								</div>
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="15b" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="16a" disabled>
-								</div> 
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="16b" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="17a" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="17b" disabled>
-								</div> 
-								<div style="margin-right: 3px;">
-									<input type="text" class="form-control form-control-sm" name="17c" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="19a" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="19b" disabled>
-								</div> 
-								<div>
-									<input type="text" class="form-control form-control-sm" name="19c" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="19d" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="19e" disabled>
-								</div> 
-								<div>
-									<input type="text" class="form-control form-control-sm" name="19f" disabled>
-								</div>
-								<div style="border-right:none;">
-									<input type="text" class="form-control form-control-sm" name="19g" disabled>
-								</div>
-								<div>
-									<input type="text" class="form-control form-control-sm" name="19h" disabled>
-								</div>  
-							</div>
-						</div>
-					</div><!--close row-->
-				</div><!--close row-->
-			</div><!--close col-->		
-		</div>
-	</div>
-<<<<<<< HEAD
-		
-	<div class="flex-row-form">
-		<div class="flex-col-form">
-			<div>
-                <div style="display: flex;">
-				<strong>20a. DATES</strong>
-					<div style="flex: .4; display: flex; flex-direction: column;">
-						<span class="label-green">(Month)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: .4; display: flex; flex-direction: column;">
-						<span class="label-green">(Day)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: .4; display: flex; flex-direction: column;">
-						<span class="label-green">(Year)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-				</div>	
-			</div>
-		</div>
-        <div class="flex-col-form" style="flex: 1.7; ">								
-			<div style="display: flex;">
-				<strong>20b. PLACE</strong>
-
-					<div style="flex: 1; display: flex; flex-direction: column;">
-						<span class="label-green">(City/Municipality)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: 1; display: flex; flex-direction: column;">
-						<span class="label-green">(Province)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: 1; display: flex; flex-direction: column;">
-						<span class="label-green">(City)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-				
-			</div>
-		</div>
-	</div>
-	<div class="flex-row-form" style="flex-direction: column; padding: 5px;">
-    <div style="margin-bottom: 5px;">
-        <strong>21a. ATTENDANT</strong>
-    </div>
-
-    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+			<div class="row" style="border: 2px solid green; border-top: none;">
+    <div class="col p-2">
+        <h6 style="font-weight:bold;">TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</h6>
         
-        <div class="d-flex align-items-center">
-            <input type="text" class="form-control form-control-sm text-center" name="attendant1" 
-                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
-            <span>1. Physician</span>
+        <div style="display: flex; font-weight: bold; margin-bottom: 2px; padding-left: 5px;">
+            <div style="width: 7%;">8</div>
+            <div style="width: 7%;">9</div>
+            <div style="width: 10%;">11</div>
+            <div style="width: 27%; text-align: center;">13</div>
+            <div style="width: 7%; margin-left: 5px;">15</div>
+            <div style="width: 7%;">16</div>
+            <div style="width: 10%;">17</div>
+            <div style="width: 25%; text-align: center;">19</div>
         </div>
 
-        <div class="d-flex align-items-center">
-            <input type="text" class="form-control form-control-sm text-center" name="attendant2" 
-                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
-            <span>2. Nurse</span>
-        </div>
+        <div class="flex-container">
+            <div><input type="text" name="8a" disabled></div>
+            <div class="section-gap"><input type="text" name="8b" disabled></div>
+            
+            <div><input type="text" name="9a" disabled></div>
+            <div class="section-gap"><input type="text" name="9b" disabled></div>
+            
+            <div><input type="text" name="11a" disabled></div>
+            <div><input type="text" name="11b" disabled></div>
+            <div class="section-gap"><input type="text" name="11c" disabled></div>
+            
+            <div><input type="text" name="13a" disabled></div>
+            <div><input type="text" name="13b" disabled></div>
+            <div><input type="text" name="13c" disabled></div>
+            <div><input type="text" name="13d" disabled></div>
+            <div><input type="text" name="13e" disabled></div>
+            <div><input type="text" name="13f" disabled></div>
+            <div><input type="text" name="13g" disabled></div>
+            <div class="section-gap"><input type="text" name="13h" disabled></div>
 
-        <div class="d-flex align-items-center">
-            <input type="text" class="form-control form-control-sm text-center" name="attendant3" 
-                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
-            <span>3. Midwife</span>
-        </div>
+            <div><input type="text" name="15a" disabled></div>
+            <div class="section-gap"><input type="text" name="15b" disabled></div>
 
-        <div class="d-flex align-items-center">
-            <input type="text" class="form-control form-control-sm text-center" name="attendant4" 
-                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
-            <span>4. Hilot (Traditional Birth Attendant)</span>
-        </div>
+            <div><input type="text" name="16a" disabled></div>
+            <div class="section-gap"><input type="text" name="16b" disabled></div>
 
-        <div class="d-flex align-items-center">
-            <input type="text" class="form-control form-control-sm text-center" name="attendant5" 
-                   style="width: 30px; height: 20px; border-top: none; border-right:none; border-left: none; border-bottom: 1px solid green !important; margin-right: 5px; border-radius: 0;">
-            <span>5. Others (Specify)</span>
-        </div>
+            <div><input type="text" name="17a" disabled></div>
+            <div><input type="text" name="17b" disabled></div>
+            <div class="section-gap"><input type="text" name="17c" disabled></div>
 
+            <div><input type="text" name="19a" disabled></div>
+            <div><input type="text" name="19b" disabled></div>
+            <div><input type="text" name="19c" disabled></div>
+            <div><input type="text" name="19d" disabled></div>
+            <div><input type="text" name="19e" disabled></div>
+            <div><input type="text" name="19f" disabled></div>
+            <div><input type="text" name="19g" disabled></div>
+            <div><input type="text" name="19h" disabled></div>
+        </div>
     </div>
 </div>
-
-    <div class="flex-row-form flex-column p-2">
-		<div>
-        <strong>21b. CERTIFICATION OF ATTENDANT AT BIRTH</strong>
-		<span class="label-5cgreen">
-					(Physician, Nurse, Midwife, Traditional Birth Attendant/Hilot, etc.)
-				</span>
-		</div>
-        <p class="m-0">I hereby certify that I attended the birth of the child who was born alive at 
-            <input type="text" name="birth_time" style="border:none; border-bottom:1px solid #000; width:80px;"> am/pm on the date specified above.
-        </p>
-        <div class="d-flex mt-2">
-            <div class="flex-fill mr-2">
-                <label class="m-0">Signature:</label><div style="border-bottom:1px solid green; height:15px;"></div>
-                <label class="m-0">Name in Print:</label><input type="text" name="attendant_name" class="form-control form-control-sm">
-                <label class="m-0">Title or Position:</label><input type="text" list="attendant_position_list" name="attendant_position" class="form-control-sm form-control">
-            </div>
-            <div class="flex-fill">
-                <label class="m-0">Address:</label><input type="text" name="attendant_address1" class="form-control form-control-sm mb-1">
-                <label class="m-0">Date:</label><input type="text" name="attendant_date" value="<?php echo strtoupper(date('F j, Y')); ?>" class="form-control form-control-sm">
-            </div>
-        </div>
-
-		<div class="flex-row-form" style="flex: 1; border-top: 2px solid green !important;">	
-		<div class="flex-col-form" >
-			<div>
-                <div style="display: flex;">
-				<strong>22. CERTIFICATE OF INFORMANT</strong>
-				<span>i hereby certify that all information supplied are true and correct to my own knowledge and belief.</span>
-					 <div class="flex-fill mr-2">
-                <label class="m-0">Signature:</label><div style="border-bottom:1px solid green; height:15px;"></div>
-                <label class="m-0">Name in Print:</label><input type="text" name="informant_name" class="form-control form-control-sm">
-                <label class="m-0">Relationship to the Child:</label><input type="text"  name="rel-child" class="form-control form-control-sm">
-				<label class="m-0">Address:</label><input type="text" name="informant">
-				<label class="m-0">Date:</label><input>
-            </div>
-
-
-				</div>	
-			</div>
-		</div>
-        <div class="flex-col-form" style="flex: 1; ">								
-			<div style="display: flex;">
-				<strong>23. PLACE</strong>
-
-					<div style="flex: 1; display: flex; flex-direction: column;">
-						<span class="label-green">(City/Municipality)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: 1; display: flex; flex-direction: column;">
-						<span class="label-green">(Province)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-
-					<div style="flex: 1; display: flex; flex-direction: column;">
-						<span class="label-green">(City)</span>
-						<input type="text" name="mother_brgy" class="form-control form-control-sm text-center" id="marriage_place">
-					</div>
-				
-			</div>
+			
 		</div>
 	</div>
-    </div>
-
-    <div class="flex-row-form flex-column p-2" style="background-color: #f9f9f9;">
-        <strong>REMARKS/ANNOTATIONS (For LCRO/OCRG Use Only)</strong>
-        <textarea name="remarks" class="w-100" style="height: 60px; border:1px solid #ccc;"></textarea>
-    </div>
-
-    <div class="p-2">
-        <strong>TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</strong>
-        <div class="box-grid">
-            <?php for($i=0; $i<30; $i++) echo "<div></div>"; ?>
-        </div>
-    </div>
-</div>
-=======
->>>>>>> 893f2d5cecd333e491b78959e3b87502e292b46f
 
 	<!-- Javascript -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
