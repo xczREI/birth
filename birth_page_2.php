@@ -230,6 +230,7 @@
 					<input type="text" class="form-control form-control-sm" id="bday1" name="late_birth_on" placeholder="DAY MONTH YEAR">
 				</div>
 				&emsp;&emsp;&emsp;&emsp;&emsp;
+				<br>
 				<div class="custom-control custom-checkbox custom-control-inline" style="margin-right: 0;">
 					<input type="checkbox" class="custom-control-input" id="the_birth" name="late_birth_type2" value="the birth">
 					<label class="custom-control-label" for="the_birth">&nbsp;the birth of</label>
@@ -417,15 +418,18 @@ $(document).ready(function() {
         const elementId = $(focusedElement).attr('id');
         let valueToFill = "";
 
-        // Get Current Date Details for "Sworn" fields
+        // Get Current Date Details
         const now = new Date();
-        const currentDay = now.getDate(); // 18
-        const currentYear = now.getFullYear(); // 2026
-        const currentMonthName = now.toLocaleString('default', { month: 'long' }); // FEBRUARY
+        const currentDay = now.getDate();
+        const currentYear = now.getFullYear();
+        const currentMonthName = now.toLocaleString('default', { month: 'long' });
 
-        // Logic to determine what to fill
+        // Prepare Parent Full Names for comparison
+        const fName = `${data.father_fname || ''} ${data.father_mname || ''} ${data.father_lname || ''}`.trim().toUpperCase();
+        const mName = `${data.mother_fname || ''} ${data.mother_mname || ''} ${data.mother_lname || ''}`.trim().toUpperCase();
+
         switch (elementId) {
-            // --- CURRENT DATE FIELDS (Sworn/Subscribed) ---
+            // --- DATE FIELDS ---
             case 'sworn_day':
             case 'ack_sworn_day':
             case 'sign_day':
@@ -442,23 +446,52 @@ $(document).ready(function() {
                 valueToFill = currentYear.toString();
                 break;
 
-            // --- DATA FROM LOCALSTORAGE ---
+            // --- DELAYED REGISTRATION TOGGLE LOGIC ---
+            case 'late_name':
+                const currentVal = $(focusedElement).val().trim().toUpperCase();
+                
+                // If box is empty OR currently shows the Father, switch to Mother
+                // If currently shows Mother or anything else, default back to Father
+                if (currentVal === "" || currentVal === fName) {
+                    // Use Father if available and not N/A, otherwise Mother
+                    valueToFill = (fName && !fName.includes("N/A")) ? fName : mName;
+                    
+                    // If we just tried to fill the same Father name that was already there, toggle to Mother
+                    if (currentVal === fName && fName !== "") {
+                        valueToFill = mName;
+                    }
+                } else {
+                    valueToFill = fName;
+                }
+                break;
+
+            case 'late_address':
+                valueToFill = `${data.mother_brgy || ''} ${data.mother_city || ''} ${data.mother_province || ''}`;
+                break;
+
+            // --- STANDARD DATA FIELDS ---
             case 'child_name':
             case 'childlatename':
+			case 'late_birth_of':
                 valueToFill = `${data.child_fname || ''} ${data.child_mname || ''} ${data.child_lname || ''}`;
                 break;
             case 'father_name':
             case 'father_sign':
-                valueToFill = `${data.father_fname || ''} ${data.father_mname || ''} ${data.father_lname || ''}`;
+            case 'ack_father_sworn':
+                valueToFill = fName;
                 break;
             case 'mother_name':
             case 'mother_sign':
-                valueToFill = `${data.mother_fname || ''} ${data.mother_mname || ''} ${data.mother_lname || ''}`;
+            case 'ack_mother_sworn':
+                valueToFill = mName;
                 break;
             case 'birth_date':
+			case 'late_birth_in2':
+			case 'late_birth_on2':
                 valueToFill = data.birth_day || "";
                 break;
             case 'birth_place':
+			case 'bplace2':
                 valueToFill = data.birth_place || "";
                 break;
         }
@@ -473,10 +506,9 @@ $(document).ready(function() {
         if (e.key === "Enter") {
             e.preventDefault(); 
             
-            // 1. Fill current field
             syncCurrentField(this);
 
-            // 2. Move to next field
+            // Move to next field
             const allInputs = $('input:visible:not([disabled])');
             const index = allInputs.index(this);
             if (index > -1 && index < allInputs.length - 1) {
