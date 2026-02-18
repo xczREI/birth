@@ -1,88 +1,43 @@
 
 <?php include 'mycon.php'; ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate of Live Birth 2 </title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-			<style>
-			/* Global font settings */
-			.ctf-birth, .ctf-birth * {
-				font-size: 10px !important;
-				color: #000;
-				box-sizing: border-box; /* Ensures padding doesn't break width */
-			}
-			.ctf-birth {
-				width: 960px;
-				margin: 20px auto;
-				background-color: #fff;
-				border: 2px solid green;
-			}
+		<style>
 			
-			/* Layout Utilities */
-			.flex-row-form { display: flex; width: 100%; border-bottom: 2px solid green; }
-			.flex-row-form:last-child { border-bottom: none; }
-			
-			/* MODIFIED: Flex Column Layout for Cells */
-			.flex-col-form { 	
-				flex: 1; 
-				border-right: 2px solid green; 
-				padding: 4px; 
-				min-height: 45px; 
-				
-				/* This fixes the overlap issue: */
-				display: flex;            
-				flex-direction: column;   /* Stacks text on top, input on bottom */
-				justify-content: space-between; /* Pushes them apart */
-			}
-			.flex-col-form:last-child { border-right: none; }
-			
-			/* Section Headings (SIDEBAR) */
-			.sidebar-label {
-				width: 35px;
-				background-color: #fff;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				font-weight: bold;
-				font-size: 14px !important;
-				text-align: center;
-				border-right: 2px solid green;
-				line-height: 1.5;
-				flex: 0 0 3.5% !important;
-				max-width: 3.5%;    
-			}
-
-			/* Input Styling */
-			.header-title { font-size: 24px !important; font-weight: bold; margin: 0; }
-			.label-green { color: green; font-style: italic; display: block; text-align: center; }
-			.label-5green { color: green; font-style: italic; display: block; text-align: left; }
-			.label-5cgreen { color: green; font-style: italic; display: inline; text-align: left; }
-			.bg-cyan { background-color: #7FFFD4 !important; }
-			
-			.form-control-sm { 
-				border-bottom: 1px solid green !important;
-				box-shadow: none !important;
-				outline: none !important;	
-			}
-
-			/* --- FIX: PUSH INPUT TO BOTTOM SAFELY --- */
-			.flex-col-form .form-control-sm {
-				margin-top: auto; /* Acts like a spring, pushing input to the bottom */
-			}
-
-			/* Grid for Bottom "Filled Up" section */
-			.box-grid {
-				display: grid;
-				grid-template-columns: repeat(30, 1fr);
-				border: 1px solid #000;
-				margin-top: 5px;
-			}
-			.box-grid div {
-				border-right: 1px solid #000;
-				height: 20px;
-				text-align: center;
-				line-height: 20px;
-			}
-			.box-grid div:last-child { border-right: none; }
+	/* Global font size 10 as requested by client */
+	.ctf-birth-back, .ctf-birth-back * {
+		font-size: 10px !important;
+	}
+	.ctf-birth-back h4 {
+		font-size: 12px !important;
+	}
+	.ctf-birth-back h6 {
+		font-size: 10px !important;
+	}
+	.ctf-birth-back input, 
+	.ctf-birth-back select, 
+	.ctf-birth-back textarea,
+	.ctf-birth-back label,
+	.ctf-birth-back span,
+	.ctf-birth-back option {
+		font-size: 10px !important;
+	}
+	/* Header styling */
+	.ctf-birth-back .affidavit-title {
+		font-size: 16px !important;
+		font-weight: bold;
+	}
+		
 		</style>
+</head>
+
+<body>
+
 
 <div class="ctf-birth-back pt-3" style="width:960px;margin: auto;">
 	<!--birth form-->
@@ -155,17 +110,19 @@
 					<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding:0; width:30%; margin-right:0;">
 						<input type="text" class="form-control form-control-sm" id="ack_mother_sworn" name="ack_sworn_mother" onkeypress="return isTextKey(event)">
 					</div>
-				, who exhibited to me (his/her)
+				, who exhibited to me 
+				<input type="radio" id="gender1" name="birth_gender" value="his" hidden>
+				<label id="gender1lbl" for="gender1">his</label>/
+				<input type="radio" id="gender2" name="birth_gender" value="her" hidden>
+				<label id="gender2lbl" for="gender2">her</label>
 				CTC/valid ID
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 30%;margin-right: 0;">
-					<input type="text" class="form-control form-control-sm" name="ack_ctc" id="ack_ct
-					c">
+					<input type="text" class="form-control form-control-sm" name="ack_ctc" id="ack_ctc">
 				</div>
 				issued on
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" name="ack_issued_on" id="ack_issued_on">
 				</div>
-				<br>
 				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" name="ack_issued_at" id="ack_issued_at" onkeypress="return isTextKey(event)">
@@ -230,7 +187,6 @@
 					<input type="text" class="form-control form-control-sm" id="bday1" name="late_birth_on" placeholder="DAY MONTH YEAR">
 				</div>
 				&emsp;&emsp;&emsp;&emsp;&emsp;
-				<br>
 				<div class="custom-control custom-checkbox custom-control-inline" style="margin-right: 0;">
 					<input type="checkbox" class="custom-control-input" id="the_birth" name="late_birth_type2" value="the birth">
 					<label class="custom-control-label" for="the_birth">&nbsp;the birth of</label>
@@ -366,13 +322,12 @@
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 8%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" maxlength="4" id="sworn_year" name="late_sworn_year" onkeypress="return isNumberKey(event)">
 				</div>
-				by
+				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<!-- Default to GERONA TARLAC but editable -->
 					<input type="text" class="form-control form-control-sm" id="sworn_at" name="late_sworn_at" value="GERONA TARLAC" onkeypress="return isTextKey(event)">
 				</div>
-				
-				<span style="letter-spacing: 0.5px;">, who exhibited to me (his/her) CTC/valid ID</span>
+				<span style="letter-spacing: 0.5px;">, Philippines, affiant who exhibited to me his/her CTC/valid ID</span>
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 20%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" name="late_ctc" id="late_ctc">
 				</div>
@@ -407,7 +362,469 @@
 	</div>
 </div>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Javascript -->
+<script>
+// Day validation for all day fields
+$(document).ready(function(){
+	$("#ack_sworn_day, #sign_day, #sworn_day").keyup(function(){
+		var a = $(this).val();
+		// Remove ordinal suffix for validation
+		var numVal = parseInt(a);
+		if(numVal >= 32 || numVal <= 0){
+			alertify.dialog('alert').set({transition:'zoom',message: 'Warning: Invalid Input!'}).show(); 
+			$(this).val("");
+		}
+	});
+});
+</script>
+
+<!-- Auto-fill dates with current date on page load -->
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+	// Get current date
+	let now = new Date();
+	let day = now.getDate();
+	let month = now.toLocaleString('en-US', { month: 'long' }).toUpperCase();
+	let year = now.getFullYear();
+	
+	// Add ordinal suffix to day (1st, 2nd, 3rd, 4th, etc.)
+	function getOrdinal(n) {
+		let s = ["th", "st", "nd", "rd"];
+		let v = n % 100;
+		return n + (s[(v - 20) % 10] || s[v] || s[0]);
+	}
+	
+	// Auto-fill Acknowledgement section dates
+	document.getElementById('ack_sworn_day').value = getOrdinal(day);
+	document.getElementById('ack_sworn_month').value = month;
+	document.getElementById('ack_sworn_year').value = year;
+	
+	// Auto-fill "In truth whereof" section dates
+	document.getElementById('sign_day').value = getOrdinal(day);
+	document.getElementById('sign_month').value = month;
+	document.getElementById('sign_year').value = year;
+	
+	// Auto-fill final SUBSCRIBED AND SWORN dates
+	document.getElementById('sworn_day').value = getOrdinal(day);
+	document.getElementById('sworn_month').value = month;
+	document.getElementById('sworn_year').value = year;
+});
+</script>
+
+<!-- Auto-fill father name from front page - AUTOMATIC -->
+<script>
+// Auto-fill when father name fields change on Page 1
+function updateFatherName() {
+	var pf = document.getElementById("father_fname").value;
+	var pm = document.getElementById("father_mname").value;
+	var pl = document.getElementById("father_lname").value;
+	var papa = (pf + " " + pm + " " + pl).trim();
+	
+	// document.getElementById("father_name").value = papa;
+	// document.getElementById("father_sign").value = papa;
+	document.getElementById("ack_father_sworn").value = papa;
+}
+
+document.getElementById("father_fname").addEventListener("input", updateFatherName);
+document.getElementById("father_mname").addEventListener("input", updateFatherName);
+document.getElementById("father_lname").addEventListener("input", updateFatherName);
+
+// Also trigger on Enter key for manual override
+document.getElementById("father_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		updateFatherName();
+	}
+});
+</script>
+
+<!-- Auto-fill mother name from front page - AUTOMATIC -->
+<script>
+// Auto-fill when mother name fields change on Page 1
+function updateMotherName() {
+	var mf = document.getElementById("mother_fname").value;
+	var mm = document.getElementById("mother_mname").value;
+	var ml = document.getElementById("mother_lname").value;
+	var mama = (mf + " " + mm + " " + ml).trim();
+	
+	// document.getElementById("mother_name").value = mama;
+	// document.getElementById("mother_sign").value = mama;
+	document.getElementById("ack_mother_sworn").value = mama;
+}
+
+document.getElementById("mother_fname").addEventListener("input", updateMotherName);
+document.getElementById("mother_mname").addEventListener("input", updateMotherName);
+document.getElementById("mother_lname").addEventListener("input", updateMotherName);
+
+// Also trigger on Enter key for manual override
+document.getElementById("mother_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		updateMotherName();
+	}
+});
+</script>
+
+<!-- Auto-fill child name from front page - AUTOMATIC -->
+<script>
+// Auto-fill when child name fields change on Page 1
+function updateChildName() {
+	var cf = document.getElementById("child_fname").value;
+	var cm = document.getElementById("child_mname").value;
+	var cl = document.getElementById("child_lname").value;
+	var bata = (cf + " " + cm + " " + cl).trim();
+	
+	document.getElementById("child_name").value = bata;
+	document.getElementById("childlatename").value = bata;
+}
+
+document.getElementById("child_fname").addEventListener("input", updateChildName);
+document.getElementById("child_mname").addEventListener("input", updateChildName);
+document.getElementById("child_lname").addEventListener("input", updateChildName);
+
+// Also trigger on Enter key for manual override
+document.getElementById("child_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		updateChildName();
+	}
+});
+</script>
+
+<!-- Auto-fill birth place from front page - AUTOMATIC -->
+<script>
+// Auto-fill when birth place fields change on Page 1
+function updateBirthPlace() {
+	var birthcity = document.getElementById("birth_city").value;
+	var birthprov = document.getElementById("birth_province").value;
+	var birthloc = (birthcity + " " + birthprov).trim();
+	
+	document.getElementById("birth_place").value = birthloc;
+	document.getElementById("bplace2").value = birthloc;
+}
+
+document.getElementById("birth_city").addEventListener("input", updateBirthPlace);
+document.getElementById("birth_province").addEventListener("input", updateBirthPlace);
+
+// Also trigger on Enter key for manual override
+document.getElementById("birth_place").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		updateBirthPlace();
+	}
+});
+</script>
+
+<!-- Auto-fill birth_date from front page birth_day field - Format: DAY MONTH YEAR -->
+<script>
+document.getElementById("birth_day").addEventListener("input", function() {
+	const dateValue = this.value.trim();
+	
+	if (dateValue) {
+		// Parse format like "10-2-2025" (day-month-year)
+		let v = dateValue.replace(/[\/\.\s]+/g, "-").replace(/-+/g, "-");
+		const parts = v.split("-");
+		
+		if (parts.length === 3) {
+			const d = parseInt(parts[0], 10);  // day
+			const m = parseInt(parts[1], 10);  // month
+			const y = parseInt(parts[2], 10);  // year
+			
+			const MON = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+			
+			// Validate date
+			const test = new Date(y, m - 1, d);
+			if (test.getFullYear() === y && test.getMonth() === m - 1 && test.getDate() === d) {
+				// Format: DAY MONTH YEAR (e.g., 6 SEPTEMBER 2018)
+				document.getElementById("birth_date").value = `${d} ${MON[m - 1]} ${y}`;
+				document.getElementById("bday1").value = `${d} ${MON[m - 1]} ${y}`;
+				document.getElementById("bday2").value = `${d} ${MON[m - 1]} ${y}`;
+			}
+		}
+	}
+});
+</script>
+
+<!-- Auto-fill bplace1 from birth place fields - AUTOMATIC -->
+<script>
+// Auto-fill when birth place fields change on Page 1
+function updateBplace1() {
+	var birthbrgy1 = document.getElementById("birth_brgy").value;
+	var birthcity1 = document.getElementById("birth_city").value;
+	var birthprov1 = document.getElementById("birth_province").value;
+	var birthloc1 = (birthbrgy1 + " " + birthcity1 + " " + birthprov1).trim();
+	
+	document.getElementById("bplace1").value = birthloc1;
+}
+
+document.getElementById("birth_brgy").addEventListener("input", updateBplace1);
+document.getElementById("birth_city").addEventListener("input", updateBplace1);
+document.getElementById("birth_province").addEventListener("input", updateBplace1);
+
+// Also trigger on Enter key for manual override
+document.getElementById("bplace1").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		updateBplace1();
+	}
+});
+</script>
+
+<!-- Auto-fill childlatename and bplace2 - handled by updateChildName and updateBirthPlace functions above -->
+<script>
+// Additional trigger on Enter key for childlatename
+document.getElementById("childlatename").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		var cf2 = document.getElementById("child_fname").value;
+		var cm2 = document.getElementById("child_mname").value;
+		var cl2 = document.getElementById("child_lname").value;
+		var bata2 = (cf2 + " " + cm2 + " " + cl2).trim();
+		document.getElementById("childlatename").value = bata2;
+		
+		var birthcity2 = document.getElementById("birth_city").value;
+		var birthprov2 = document.getElementById("birth_province").value;
+		var birthloc2 = (birthcity2 + " " + birthprov2).trim();
+		document.getElementById("bplace2").value = birthloc2;
+	}
+});
+</script>
+
+<!-- Auto-fill late_name from informant_name (field 22) - AUTOMATIC -->
+<script>
+// Auto-fill when informant_name changes
+document.getElementById("informant_name").addEventListener("input", function() {
+	document.getElementById("late_name").value = this.value;
+	document.getElementById("affiant_name").value = this.value;
+});
+
+// Auto-fill when informant_address changes
+document.getElementById("informant_address").addEventListener("input", function() {
+	document.getElementById("late_address").value = this.value;
+});
+
+// Also trigger on Enter key for manual override
+document.getElementById("late_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("late_name").value = document.getElementById("informant_name").value;
+		document.getElementById("late_address").value = document.getElementById("informant_address").value;
+		document.getElementById("affiant_name").value = document.getElementById("informant_name").value;
+	}
+});
+</script>
+
+<!-- Auto-fill affiant_name from late_name -->
+<script>
+document.getElementById("late_name").addEventListener("input", function() {
+	document.getElementById("affiant_name").value = this.value;
+});
+
+document.getElementById("affiant_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("affiant_name").value = document.getElementById("late_name").value;
+	}
+});
+</script>
+
+<!-- Auto-fill attend_birth_by from attendant_name - AUTOMATIC -->
+<script>
+// Auto-fill when attendant_name changes on Page 1
+document.getElementById("attendant_name").addEventListener("input", function() {
+	document.getElementById("attend_birth_by").value = this.value;
+});
+
+// Auto-fill when attendant_address1 changes on Page 1
+document.getElementById("attendant_address1").addEventListener("input", function() {
+	document.getElementById("who_resides_at").value = this.value;
+});
+
+// Also trigger on Enter key for manual override
+document.getElementById("attend_birth_by").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("attend_birth_by").value = document.getElementById("attendant_name").value;
+		document.getElementById("who_resides_at").value = document.getElementById("attendant_address1").value;
+	}
+});
+</script>
+
+<!-- Auto-fill married_txt1 from marriage_date - Format: MONTH DAY YEAR -->
+<script>
+document.getElementById("marriage_date").addEventListener("input", function() {
+	const dateValue = this.value.trim();
+	
+	if (dateValue) {
+		// Replace slashes, dots, or spaces with dash
+		let v = dateValue.replace(/[\/\.\s]+/g, "-").replace(/-+/g, "-");
+		const parts = v.split("-");
+		
+		if (parts.length === 3) {
+			const m = parseInt(parts[0], 10);  // month
+			const d = parseInt(parts[1], 10);  // day
+			const y = parseInt(parts[2], 10);  // year
+			
+			const MON = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+			
+			// Validate date
+			const test = new Date(y, m - 1, d);
+			if (test.getFullYear() === y && test.getMonth() === m - 1 && test.getDate() === d) {
+				// Format: MONTH DAY YEAR (e.g., DECEMBER 17 2017)
+				document.getElementById("married_txt1").value = `${MON[m - 1]} ${d} ${y}`;
+			}
+		}
+	}
+});
+</script>
+
+<!-- Auto-fill married_txt2 from marriage_place - AUTOMATIC -->
+<script>
+// Auto-fill when marriage_place changes on Page 1
+document.getElementById("marriage_place").addEventListener("input", function() {
+	document.getElementById("married_txt2").value = this.value;
+});
+
+// Also trigger on Enter key for manual override
+document.getElementById("married_txt2").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("married_txt2").value = document.getElementById("marriage_place").value;
+	}
+});
+</script>
+
+<!-- Auto-fill not_married_txt from father name - AUTOMATIC when not_married checkbox is checked -->
+<script>
+// Auto-fill when not_married checkbox is checked
+document.getElementById("not_married").addEventListener("change", function() {
+	if (this.checked) {
+		var pf2 = document.getElementById("father_fname").value;
+		var pm2 = document.getElementById("father_mname").value;
+		var pl2 = document.getElementById("father_lname").value;
+		var papa2 = (pf2 + " " + pm2 + " " + pl2).trim();
+		document.getElementById("not_married_txt").value = papa2;
+	}
+});
+
+// Also trigger on Enter key for manual override
+document.getElementById("not_married_txt").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		var pf2 = document.getElementById("father_fname").value;
+		var pm2 = document.getElementById("father_mname").value;
+		var pl2 = document.getElementById("father_lname").value;
+		var papa2 = (pf2 + " " + pm2 + " " + pl2).trim();
+		document.getElementById("not_married_txt").value = papa2;
+	}
+});
+</script>
+
+<!-- Auto-fill applicant_relation from rel_child (relationship to child from field 22) - AUTOMATIC -->
+<script>
+// Auto-fill when rel_child changes on Page 1
+document.getElementById("rel_child").addEventListener("input", function() {
+	document.getElementById("applicant_relation").value = this.value.toUpperCase();
+});
+
+// Also trigger on Enter key for manual override
+document.getElementById("applicant_relation").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("applicant_relation").value = document.getElementById("rel_child").value.toUpperCase();
+	}
+});
+</script>
+
+<!-- Auto-fill ack_sworn_name and late_sworn_name from civil_name - AUTOMATIC -->
+<script>
+// Auto-fill when civil_name changes on Page 1
+document.getElementById("civil_name").addEventListener("input", function() {
+	document.getElementById("ack_sworn_name").value = this.value;
+	document.getElementById("late_sworn_name").value = this.value;
+});
+
+// Also trigger on Enter key for manual override
+document.getElementById("ack_sworn_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("ack_sworn_name").value = document.getElementById("civil_name").value;
+	}
+});
+</script>
+
+<!-- Auto-fill late_sworn_name from civil_name -->
+<script>
+document.getElementById("late_sworn_name").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("late_sworn_name").value = document.getElementById("civil_name").value;
+	}
+});
+</script>
+
+<!-- Auto-fill CTC fields from ack_ctc -->
+<script>
+document.getElementById("late_ctc").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("late_ctc").value = document.getElementById("ack_ctc").value;
+	}
+});
+
+document.getElementById("late_issued_on").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("late_issued_on").value = document.getElementById("ack_issued_on").value;
+	}
+});
+
+document.getElementById("late_issued_at").addEventListener("keydown", function(event) {
+	if (event.key === "Enter") {
+		document.getElementById("late_issued_at").value = document.getElementById("ack_issued_at").value;
+	}
+});
+</script>
+
+<!-- Move to next input on Enter key -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	let inputs = document.querySelectorAll(".form-control");
+	
+	inputs.forEach((input, index) => {
+		input.addEventListener("keydown", function(event) {
+			if(event.key === "Enter"){
+				event.preventDefault();
+				let nextInput = inputs[index + 1];
+				if (nextInput){
+					nextInput.focus();
+				}
+			}
+		});
+	});
+});
+</script>
+
+<!-- Auto-check "the birth" checkbox when filling child late name -->
+<script>
+document.getElementById("childlatename").addEventListener("input", function() {
+	if(this.value.trim() !== "") {
+		document.getElementById("the_birth").checked = true;
+		document.getElementById("my_birth").checked = false;
+	}
+});
+
+document.getElementById("bplace1").addEventListener("input", function() {
+	if(this.value.trim() !== "") {
+		document.getElementById("my_birth").checked = true;
+		document.getElementById("the_birth").checked = false;
+	}
+});
+</script>
+
+<!-- Auto-check married checkbox when filling married date -->
+<script>
+document.getElementById("married_txt1").addEventListener("input", function() {
+	if(this.value.trim() !== "") {
+		document.getElementById("married").checked = true;
+		document.getElementById("not_married").checked = false;
+	}
+});
+
+document.getElementById("not_married_txt").addEventListener("input", function() {
+	if(this.value.trim() !== "") {
+		document.getElementById("not_married").checked = true;
+		document.getElementById("married").checked = false;
+	}
+});
+</script>
+
 <script> 
 $(document).ready(function() {
     
@@ -518,3 +935,6 @@ $(document).ready(function() {
     });
 });
 </script>
+
+</body>
+</html>
