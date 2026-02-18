@@ -155,19 +155,17 @@
 					<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding:0; width:30%; margin-right:0;">
 						<input type="text" class="form-control form-control-sm" id="ack_mother_sworn" name="ack_sworn_mother" onkeypress="return isTextKey(event)">
 					</div>
-				, who exhibited to me 
-				<input type="radio" id="gender1" name="birth_gender" value="his" hidden>
-				<label id="gender1lbl" for="gender1">his</label>/
-				<input type="radio" id="gender2" name="birth_gender" value="her" hidden>
-				<label id="gender2lbl" for="gender2">her</label>
+				, who exhibited to me (his/her)
 				CTC/valid ID
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 30%;margin-right: 0;">
-					<input type="text" class="form-control form-control-sm" name="ack_ctc" id="ack_ctc">
+					<input type="text" class="form-control form-control-sm" name="ack_ctc" id="ack_ct
+					c">
 				</div>
 				issued on
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" name="ack_issued_on" id="ack_issued_on">
 				</div>
+				<br>
 				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" name="ack_issued_at" id="ack_issued_at" onkeypress="return isTextKey(event)">
@@ -232,6 +230,7 @@
 					<input type="text" class="form-control form-control-sm" id="bday1" name="late_birth_on" placeholder="DAY MONTH YEAR">
 				</div>
 				&emsp;&emsp;&emsp;&emsp;&emsp;
+				<br>
 				<div class="custom-control custom-checkbox custom-control-inline" style="margin-right: 0;">
 					<input type="checkbox" class="custom-control-input" id="the_birth" name="late_birth_type2" value="the birth">
 					<label class="custom-control-label" for="the_birth">&nbsp;the birth of</label>
@@ -367,12 +366,13 @@
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 8%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" maxlength="4" id="sworn_year" name="late_sworn_year" onkeypress="return isNumberKey(event)">
 				</div>
-				at
+				by
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<!-- Default to GERONA TARLAC but editable -->
 					<input type="text" class="form-control form-control-sm" id="sworn_at" name="late_sworn_at" value="GERONA TARLAC" onkeypress="return isTextKey(event)">
 				</div>
-				<span style="letter-spacing: 0.5px;">, Philippines, affiant who exhibited to me his/her CTC/valid ID</span>
+				
+				<span style="letter-spacing: 0.5px;">, who exhibited to me (his/her) CTC/valid ID</span>
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 20%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" name="late_ctc" id="late_ctc">
 				</div>
@@ -411,43 +411,109 @@
 <script> 
 $(document).ready(function() {
     
-    function syncFromPage1() {
+    function syncCurrentField(focusedElement) {
         const rawData = localStorage.getItem('birth_form_data');
-        if (!rawData) {
-            alert("No data found from Page 1. Please type something in Page 1 first.");
-            return;
+        const data = rawData ? JSON.parse(rawData) : {};
+        
+        const elementId = $(focusedElement).attr('id');
+        let valueToFill = "";
+
+        // Get Current Date Details
+        const now = new Date();
+        const currentDay = now.getDate();
+        const currentYear = now.getFullYear();
+        const currentMonthName = now.toLocaleString('default', { month: 'long' });
+
+        // Prepare Parent Full Names for comparison
+        const fName = `${data.father_fname || ''} ${data.father_mname || ''} ${data.father_lname || ''}`.trim().toUpperCase();
+        const mName = `${data.mother_fname || ''} ${data.mother_mname || ''} ${data.mother_lname || ''}`.trim().toUpperCase();
+
+        switch (elementId) {
+            // --- DATE FIELDS ---
+            case 'sworn_day':
+            case 'ack_sworn_day':
+            case 'sign_day':
+                valueToFill = currentDay.toString();
+                break;
+            case 'sworn_month':
+            case 'ack_sworn_month':
+            case 'sign_month':
+                valueToFill = currentMonthName;
+                break;
+            case 'sworn_year':
+            case 'ack_sworn_year':
+            case 'sign_year':
+                valueToFill = currentYear.toString();
+                break;
+
+            // --- DELAYED REGISTRATION TOGGLE LOGIC ---
+            case 'late_name':
+                const currentVal = $(focusedElement).val().trim().toUpperCase();
+                
+                // If box is empty OR currently shows the Father, switch to Mother
+                // If currently shows Mother or anything else, default back to Father
+                if (currentVal === "" || currentVal === fName) {
+                    // Use Father if available and not N/A, otherwise Mother
+                    valueToFill = (fName && !fName.includes("N/A")) ? fName : mName;
+                    
+                    // If we just tried to fill the same Father name that was already there, toggle to Mother
+                    if (currentVal === fName && fName !== "") {
+                        valueToFill = mName;
+                    }
+                } else {
+                    valueToFill = fName;
+                }
+                break;
+
+            case 'late_address':
+                valueToFill = `${data.mother_brgy || ''} ${data.mother_city || ''} ${data.mother_province || ''}`;
+                break;
+
+            // --- STANDARD DATA FIELDS ---
+            case 'child_name':
+            case 'childlatename':
+			case 'late_birth_of':
+                valueToFill = `${data.child_fname || ''} ${data.child_mname || ''} ${data.child_lname || ''}`;
+                break;
+            case 'father_name':
+            case 'father_sign':
+            case 'ack_father_sworn':
+                valueToFill = fName;
+                break;
+            case 'mother_name':
+            case 'mother_sign':
+            case 'ack_mother_sworn':
+                valueToFill = mName;
+                break;
+            case 'birth_date':
+			case 'late_birth_in2':
+			case 'late_birth_on2':
+                valueToFill = data.birth_day || "";
+                break;
+            case 'birth_place':
+			case 'bplace2':
+                valueToFill = data.birth_place || "";
+                break;
         }
 
-        const data = JSON.parse(rawData);
-
-        // Fill Affidavit Fields
-        $('#child_name').val(data.child_fname + " " + data.child_mname + " " + data.child_lname);
-        $('#father_name').val(data.father_fname + " " + data.father_mname + " " + data.father_lname);
-        $('#mother_name').val(data.mother_fname + " " + data.mother_mname + " " + data.mother_lname);
-        
-        // Fill Signatures
-        $('#father_sign').val(data.father_fname + " " + data.father_mname + " " + data.father_lname);
-        $('#mother_sign').val(data.mother_fname + " " + data.mother_mname + " " + data.mother_lname);
-        
-        // Fill Sworn Names (using the IDs from your HTML)
-        $('#ack_father_sworn').val(data.father_fname + " " + data.father_lname);
-        $('#ack_mother_sworn').val(data.mother_fname + " " + data.mother_lname);
-
-        // Fill Birth Info
-        $('#birth_date').val(data.birth_day);
-        $('#birth_place').val(data.birth_place);
-        
-        // Fill Delayed Registration Name
-        $('#childlatename').val(data.child_fname + " " + data.child_mname + " " + data.child_lname);
-        
-        console.log("Data Pulled Successfully");
+        if (valueToFill) {
+            $(focusedElement).val(valueToFill.trim().toUpperCase());
+        }
     }
 
     // Handle the Enter Key
     $('input').on('keydown', function(e) {
         if (e.key === "Enter") {
-            e.preventDefault(); // Stop page from reloading
-            syncFromPage1();
+            e.preventDefault(); 
+            
+            syncCurrentField(this);
+
+            // Move to next field
+            const allInputs = $('input:visible:not([disabled])');
+            const index = allInputs.index(this);
+            if (index > -1 && index < allInputs.length - 1) {
+                allInputs.eq(index + 1).focus();
+            }
         }
     });
 });
