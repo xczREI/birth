@@ -1,4 +1,6 @@
 <?php 
+
+use Dompdf\Css\Style;
 include 'mycon.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +10,7 @@ include 'mycon.php'; ?>
     <title>Certificate of Live Birth - Form 102</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 			<style>
-<<<<<<< HEAD
+ HEAD
 		/* Global font size 10 as requested by client */
 		.ctf-birth, .ctf-birth * {
 			font-size: 10px !important;
@@ -173,8 +175,9 @@ include 'mycon.php'; ?>
 			$sqlp = "SELECT * from tblmunicipals";
 			$resultp = $connx->query($sqlp);
 			while ($row = $resultp->fetch_assoc()) {
-				echo "<option value='" . $row['municipals'] . "'>" . $row['municipals'] . "</option>";
-=======
+				echo "<option value='" . $row['municipals'] . "'>" . $row['municipals'] . "</option>";}
+				?>
+		<style>
 			/* Global font settings */
 			.ctf-birth, .ctf-birth * {
 				font-size: 10px !important;
@@ -220,7 +223,6 @@ include 'mycon.php'; ?>
 				line-height: 1.5;
 				flex: 0 0 3.5% !important;
 				max-width: 3.5%;    
->>>>>>> 5a0e17319cb730845abd179c9d75083579fe6354
 			}
 
 			/* Input Styling */
@@ -1076,6 +1078,6 @@ $(document).ready(function() {
 		}
 	});
 </script>
-
+?>
 </body>
 </html>

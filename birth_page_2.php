@@ -38,7 +38,6 @@
 
 <body>
 
-
 <div class="ctf-birth-back pt-3" style="width:960px;margin: auto;">
 	<!--birth form-->
 	<div class="form" style="padding:0 15px 0 15px;">
@@ -361,7 +360,6 @@
 		</div><!--close row-->
 	</div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Javascript -->
