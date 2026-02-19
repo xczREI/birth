@@ -364,9 +364,13 @@ include 'mycon.php';
 							<h6 style="padding-top:2px;">3.&nbsp;DATE OF<br>&emsp;BIRTH</h6>
 						</div>
 						<div class="col-5">
-							<h6 align="center"><span style="color:green;">(Day) - (Month) - (Year)</span></h6>
+							<div class="row">
+								<div class="col-4"><h6 align="center"><span style="color:green;">(Day)</span></h6></div>
+								<div class="col-4"><h6 align="center"><span style="color:green;">(Month)</span></h6></div>
+								<div class="col-4"><h6 align="center"><span style="color:green;">(Year)</span></h6></div>
+							</div>
 							<div class="input-group input-group-sm">
-								<input type="text" tabindex="5" class="form-control form-control-sm" id="birth_day" name="birth_day" placeholder="Example: 9-5-2025">
+								<input tabindex="5" type="text" class="form-control form-control-sm" id="birth_day" name="birth_day"  placeholder="Example: 9-5-2025">
 							</div>
 						</div>
 					</div><!--close row-->
@@ -427,7 +431,7 @@ include 'mycon.php';
 			</div><!--close row-->
 			<!-- Mother Info -->
 			<div class="row">
-				<div class="mother" style="border:2px solid green; border-top:none; padding:4em 3px 0 1px;" align="center">
+				<div class="mother" style="border:2px solid green; border-top:none; padding:4em 3px 0 3px; width:30px	" align="center">
 					<h4>M<br>O<br>T<br>H<br>E<br>R</h4>
 				</div>
 				<div class="col" style="border:2px solid green; border-left:none; border-top:none;">
@@ -720,7 +724,7 @@ include 'mycon.php';
 							<div class="input-group mt-1">
 								<div class="input-group-prepend">
 									<span class="input-group-text" style="padding:0;border:none; background-color:white; color:black;">Name in Print&nbsp;</span>
-								</div>
+								</div> 
 								<input type="text" class="form-control form-control-sm" id ="attendant_name" name="attendant_name" onkeypress="return isTextKey(event)">
 							</div>
 							<div class="input-group mt-1">
