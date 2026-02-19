@@ -1251,7 +1251,7 @@ include 'mycon.php';
 
 
 <script>
-				$(document).ready(function() {
+		$(document).ready(function() {
 
 			// 1. Copy Child's Middle Name -> Mother's Maiden Last Name
 			$('#child_mname').on('keydown', function(e) {
