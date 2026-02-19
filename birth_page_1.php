@@ -372,7 +372,7 @@ include 'mycon.php';
 					</div><!--close row-->
 					<div class="row" style="border-top:2px solid green;">
 						<div class="col-2">
-							<h6 style="padding-top:2px;">4.&nbsp;PLACE OF <br>&emsp;BIRTH</h6>
+							<h6 style="padding-top:2px;">4.&nbsp;PLACE OF BIRTH</h6>
 						</div>
 						<div class="col-4">
 							<h6><span class="m-0" style="color:green;">(Name of Hospital/Clinic/Institution/<br>House No.,St.,Barangay)</span></h6>
@@ -1280,27 +1280,6 @@ include 'mycon.php';
 	</script>
 
 	<script>
-		document.getElementById("father_fname").addEventListener("keydown", function(event) {
-			if (event.key === "Enter") {
-				var tatangfname = document.getElementById("father_fname").value;
-				if ((tatangfname == "UNKNOWN") || (tatangfname == "unknown")) {
-					document.getElementById("father_citizen").value = "Not Applicable";
-					document.getElementById("father_sect").value = "Not Applicable";
-					document.getElementById("father_occupation").value = "Not Applicable";
-					document.getElementById("father_brgy").value = "Not Applicable";
-					document.getElementById("father_city").value = "Not Applicable";
-					document.getElementById("father_province").value = "Not Applicable";
-					document.getElementById("marriage_place").value = "Not Applicable";
-					document.getElementById("marriage_date").value = "Not Applicable";
-					document.getElementById("father_country").value = "Not Applicable";
-					document.getElementById("father_age").value = "N/A";
-					document.getElementById("father_lname").value = "";
-				}
-			}
-		});
-	</script>
-
-	<script>
 		document.getElementById("mother_country").addEventListener("focus", function() {
 			if(this.value === "PHILIPPINES") {
 				this.value = "";
@@ -1345,19 +1324,29 @@ $(document).ready(function() {
             child_fname: $('#child_fname').val(),
             child_mname: $('#child_mname').val(),
             child_lname: $('#child_lname').val(),
+
             father_fname: $('#father_fname').val(),
             father_mname: $('#father_mname').val(),
             father_lname: $('#father_lname').val(),
+
             mother_fname: $('input[name="mother_fname"]').val(),
             mother_mname: $('input[name="mother_mname"]').val(),
             mother_lname: $('#mother_lname').val(),
+
             birth_day: $('input[name="birth_day"]').val(),
-            birth_place: $('input[name="birth_brgy"]').val() + " " + $('input[name="birth_city"]').val()
+            birth_place: ($('#birth_brgy').val() + " " + $('#birth_city').val() + " " + $('#birth_province').val()).trim(),
+
+			marriage_date: $('#marriage_date').val(), 
+        	marriage_place: $('#marriage_place').val(),
+
+			civil_name: $('#civil_name').val(),
+			civil_position: $('#civil_position').val(),
+
+			rel_child: $('#rel_child').val()
         };
         localStorage.setItem('birth_form_data', JSON.stringify(data));
     }
 
-    // Save every time the user types in these specific fields
     $('input').on('input', saveToMemory);
 });
 </script>
@@ -1369,8 +1358,7 @@ $(document).ready(function() {
 			// Clear the current input value immediately
 			$(this).val('');
 			
-			// Trigger the 'input' event to ensure Page 2 (Affidavit) 
-			// also clears the mirrored data in real-time
+
 			$(this).trigger('input');
 		}
 	});

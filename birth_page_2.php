@@ -67,7 +67,7 @@
 				, who was born on
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding:0; width:24%; margin-right:0;">
 					<!-- Format: DAY MONTH YEAR (e.g., 6 SEPTEMBER 2018) -->
-					<input type="text" class="form-control form-control-sm" id="birth_date" name="birth_date" placeholder="DAY MONTH YEAR">
+					<input type="text" class="form-control form-control-sm" id="birth_date" name="birth_date">
 				</div>
 				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding:0; width:45%; margin-right:0;">
@@ -138,11 +138,12 @@
 						<h6>Name in Print</h6>
 					</div>
 					<div class="col-6" align="center">
-						<!-- Default to MUNICIPAL CIVIL REGISTRAR but editable -->
-						<input type="text" class="form-control form-control-sm" id="ack_sworn_position" name="ack_sworn_position" value="MUNICIPAL CIVIL REGISTRAR" onkeypress="return isTextKey(event)">
+						
+						<input type="text" class="form-control form-control-sm" id="ack_sworn_position" name="ack_sworn_position" onkeypress="return isTextKey(event)">
 						<h6>Position/Title/Designation</h6>
-						<!-- Default to GERONA TARLAC but editable -->
-						<input type="text" class="form-control form-control-sm" id="ack_sworn_address" name="ack_sworn_address" value="GERONA TARLAC" onkeypress="return isTextKey(event)">
+					
+						<input type="text" class="form-control form-control-sm" id="ack_sworn_address" name="ack_sworn_address"
+						 onkeypress="return isTextKey(event)">
 						<h6>Address</h6>
 					</div>
 				</div>
@@ -183,7 +184,7 @@
 				on
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0;width: 38%;margin-right: 0;">
 					<!-- Format: DAY MONTH YEAR -->
-					<input type="text" class="form-control form-control-sm" id="bday1" name="late_birth_on" placeholder="DAY MONTH YEAR">
+					<input type="text" class="form-control form-control-sm" id="bday1" name="late_birth_on">
 				</div>
 				&emsp;&emsp;&emsp;&emsp;&emsp;
 				<div class="custom-control custom-checkbox custom-control-inline" style="margin-right: 0;">
@@ -204,7 +205,7 @@
 				on
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0;width: 34%;margin-right: 0;">
 					<!-- Format: DAY MONTH YEAR -->
-					<input type="text" class="form-control form-control-sm" id="bday2" name="late_birth_on2" placeholder="DAY MONTH YEAR">
+					<input type="text" class="form-control form-control-sm" id="bday2" name="late_birth_on2">
 				</div>
 				.
 				</h6>
@@ -222,19 +223,18 @@
 				</h6>
 				<h6>&emsp;&emsp;&emsp;&emsp;3.&emsp;That I/he/she is a citizen of
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 50%;margin-right: 0;">
-					<!-- Default to PHILIPPINES but editable -->
-					<input type="text" class="form-control form-control-sm" id="late_citizen" name="late_citizen" value="PHILIPPINES">
+					<input type="text" class="form-control form-control-sm" id="late_citizen" name="late_citizen">
 				</div>
 				.
 				</h6>
 				<h6>&emsp;&emsp;&emsp;&emsp;4.&emsp;That my/his/her parents were&emsp;
 				<div class="custom-control custom-checkbox custom-control-inline" style="margin-right: 0;">
-					<input type="checkbox" class="custom-control-input" id="married" name="married_type" value="married">
+					<input type="checkbox" class="custom-control-input" id="married" name="married_type">
 					<label class="custom-control-label" for="married">&nbsp;married on</label>
 				</div>
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 30%;margin-right: 0;">
-					<!-- Auto-fill from marriage_date (field 20a) - Format: MONTH DAY YEAR -->
-					<input type="text" class="form-control form-control-sm" id="married_txt1" name="married_on" placeholder="MONTH DAY YEAR">
+					
+					<input type="text" class="form-control form-control-sm" id="married_txt1" name="married_on">
 				</div>
 				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 35%;margin-right: 0;">
@@ -257,7 +257,7 @@
 				<h6>&emsp;&emsp;&emsp;&emsp;5.&emsp;That the reason for the delay in registering my/his/her birth was
 				<div class="custom-control custom-checkbox custom-control-inline" style="padding: 0; width: 47%;margin-right: 0;">
 					<!-- Default to NEGLIGENCE but editable -->
-					<input type="text" class="form-control form-control-sm" name="late_reason_1" value="NEGLIGENCE">
+					<input type="text" class="form-control form-control-sm" name="late_reason_1">
 				</div>
 				&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 78%;margin-right: 0;">
@@ -279,6 +279,7 @@
 				of the said person.
 				</h6>
 				<h6>&emsp;&emsp;&emsp;&emsp;7.&emsp;That I am executing this affidavit to attest to the truthfulness of the foregoing statements for all legal intents and purposes.</h6><br>
+				
 				<h6>&emsp;&emsp;&emsp;&emsp;In truth whereof, I have affixed my signature below this
 				<div class="custom-control custom-checkbox custom-control-inline" style="padding: 0; width: 8%;margin-right: 0;">
 					<input type="text" class="form-control form-control-sm" id="sign_day" name="sign_day">
@@ -297,7 +298,7 @@
 				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 30%;margin-right: 0;">
 					<!-- Default to GERONA TARLAC but editable -->
-					<input type="text" class="form-control form-control-sm" id="sign_at" name="sign_at" value="GERONA TARLAC" onkeypress="return isTextKey(event)">
+					<input type="text" class="form-control form-control-sm" id="sign_at" name="sign_at" onkeypress="return isTextKey(event)">
 				</div>
 				, Philippines.
 				</h6>
@@ -324,7 +325,7 @@
 				at
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 25%;margin-right: 0;">
 					<!-- Default to GERONA TARLAC but editable -->
-					<input type="text" class="form-control form-control-sm" id="sworn_at" name="late_sworn_at" value="GERONA TARLAC" onkeypress="return isTextKey(event)">
+					<input type="text" class="form-control form-control-sm" id="sworn_at" name="late_sworn_at" onkeypress="return isTextKey(event)">
 				</div>
 				<span style="letter-spacing: 0.5px;">, Philippines, affiant who exhibited to me his/her CTC/valid ID</span>
 				<div class="custom-control custom-checkbox custom-control-inline mt-1" style="padding: 0; width: 20%;margin-right: 0;">
@@ -348,11 +349,11 @@
 						<h6>Name in Print</h6>
 					</div>
 					<div class="col-6" align="center">
-						<!-- Default to MUNICIPAL CIVIL REGISTRAR but editable -->
-						<input type="text" class="form-control form-control-sm" id="late_sworn_position" name="late_sworn_position" value="MUNICIPAL CIVIL REGISTRAR" onkeypress="return isTextKey(event)">
+				
+						<input type="text" class="form-control form-control-sm" id="late_sworn_position" name="late_sworn_position" onkeypress="return isTextKey(event)">
 						<h6>Position/Title/Designation</h6>
-						<!-- Default to GERONA TARLAC but editable -->
-						<input type="text" class="form-control form-control-sm" id="late_sworn_address" name="late_sworn_address" value="GERONA TARLAC" onkeypress="return isTextKey(event)">
+						
+						<input type="text" class="form-control form-control-sm" id="late_sworn_address" name="late_sworn_address" onkeypress="return isTextKey(event)">
 						<h6>Address</h6>
 					</div>
 				</div>
@@ -375,39 +376,6 @@ $(document).ready(function(){
 			$(this).val("");
 		}
 	});
-});
-</script>
-
-<!-- Auto-fill dates with current date on page load -->
-<script>
-window.addEventListener('DOMContentLoaded', function() {
-	// Get current date
-	let now = new Date();
-	let day = now.getDate();
-	let month = now.toLocaleString('en-US', { month: 'long' }).toUpperCase();
-	let year = now.getFullYear();
-	
-	// Add ordinal suffix to day (1st, 2nd, 3rd, 4th, etc.)
-	function getOrdinal(n) {
-		let s = ["th", "st", "nd", "rd"];
-		let v = n % 100;
-		return n + (s[(v - 20) % 10] || s[v] || s[0]);
-	}
-	
-	// Auto-fill Acknowledgement section dates
-	document.getElementById('ack_sworn_day').value = getOrdinal(day);
-	document.getElementById('ack_sworn_month').value = month;
-	document.getElementById('ack_sworn_year').value = year;
-	
-	// Auto-fill "In truth whereof" section dates
-	document.getElementById('sign_day').value = getOrdinal(day);
-	document.getElementById('sign_month').value = month;
-	document.getElementById('sign_year').value = year;
-	
-	// Auto-fill final SUBSCRIBED AND SWORN dates
-	document.getElementById('sworn_day').value = getOrdinal(day);
-	document.getElementById('sworn_month').value = month;
-	document.getElementById('sworn_year').value = year;
 });
 </script>
 
@@ -852,7 +820,7 @@ $(document).ready(function() {
                 break;
             case 'sworn_month':
             case 'ack_sworn_month':
-            case 'sign_month':
+            case 'sign_month':	
                 valueToFill = currentMonthName;
                 break;
             case 'sworn_year':
@@ -860,8 +828,17 @@ $(document).ready(function() {
             case 'sign_year':
                 valueToFill = currentYear.toString();
                 break;
+			
+			case 'married_txt1':
+			case 'married_on':
+				valueToFill = data.marriage_date || "";
+				break;
 
-            // --- DELAYED REGISTRATION TOGGLE LOGIC ---
+			case 'married_txt2': 
+			case 'married_at':
+				valueToFill = data.marriage_place || "";
+				break;
+
             case 'late_name':
                 const currentVal = $(focusedElement).val().trim().toUpperCase();
                 
@@ -884,39 +861,64 @@ $(document).ready(function() {
                 valueToFill = `${data.mother_brgy || ''} ${data.mother_city || ''} ${data.mother_province || ''}`;
                 break;
 
-            // --- STANDARD DATA FIELDS ---
             case 'child_name':
             case 'childlatename':
 			case 'late_birth_of':
                 valueToFill = `${data.child_fname || ''} ${data.child_mname || ''} ${data.child_lname || ''}`;
                 break;
+
             case 'father_name':
             case 'father_sign':
             case 'ack_father_sworn':
                 valueToFill = fName;
                 break;
+
             case 'mother_name':
             case 'mother_sign':
             case 'ack_mother_sworn':
                 valueToFill = mName;
                 break;
+
             case 'birth_date':
-			case 'late_birth_in2':
-			case 'late_birth_on2':
-                valueToFill = data.birth_day || "";
+			case 'late_birth_on':
+			case 'bday1':
+				valueToFill = data.birth_day || "";
+				break;
+
+			case 'birth_place':
+			case 'late_birth_in':
+			case 'bplace1':
+				valueToFill = data.birth_place || "";
+				break;
+			
+			case 'ack_sworn_name':
+            case 'late_sworn_name':
+                valueToFill = data.civil_name || "";
                 break;
-            case 'birth_place':
-			case 'bplace2':
-                valueToFill = data.birth_place || "";
-                break;
+
+			case 'ack_sworn_position':
+			case 'late_sworn_position':
+				valueToFill = data.civil_position || ""; 
+				break;
+
+			case 'applicant_than_owner':
+			case 'applicant_relation':  
+				valueToFill = data.rel_child || "";
+				break;
+
+			case 'ack_sworn_address':
+			case 'late_sworn_address':
+				valueToFill = "GERONA TARLAC";
+				break;
+
         }
+			
 
         if (valueToFill) {
             $(focusedElement).val(valueToFill.trim().toUpperCase());
         }
     }
 
-    // Handle the Enter Key
     $('input').on('keydown', function(e) {
         if (e.key === "Enter") {
             e.preventDefault(); 
