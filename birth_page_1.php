@@ -46,44 +46,6 @@ include 'mycon.php';
 		.editable-select input {
 			width: 100%;
 		}
-
-		/* Layout for the PSA Data Slots */
-.flex-container {
-    display: flex;
-    flex-wrap: nowrap;
-    margin-top: 5px;
-    width: 100%;
-}
-
-.flex-container > div {
-    flex: 1;
-    border: 1px solid #000; /* Standard black border for PSA slots */
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Remove internal borders to create the "connected" look for sub-slots */
-.flex-container div:not(:last-child) {
-    border-right: none;
-}
-
-/* Specific groupings to create visual gaps between numbered sections */
-.section-gap {
-    margin-right: 5px;
-    border-right: 1px solid #000 !important;
-}
-
-/* Ensure inputs inside slots are clean and centered */
-.flex-container input {
-    border: none !important;
-    text-align: center;
-    width: 100%;
-    background-color: transparent;
-    font-weight: bold;
-}
-
 	</style>
 
 	<script type="text/javascript">
@@ -372,7 +334,7 @@ include 'mycon.php';
 					</div><!--close row-->
 					<div class="row" style="border-top:2px solid green;">
 						<div class="col-2">
-							<h6 style="padding-top:2px;">4.&nbsp;PLACE OF BIRTH</h6>
+							<h6 style="padding-top:2px;">4.&nbsp;PLACE OF <br>&emsp;BIRTH</h6>
 						</div>
 						<div class="col-4">
 							<h6><span class="m-0" style="color:green;">(Name of Hospital/Clinic/Institution/<br>House No.,St.,Barangay)</span></h6>
@@ -715,7 +677,7 @@ include 'mycon.php';
 								<div class="input-group-prepend">
 									<span class="input-group-text" style="padding:0;border:none; background-color:white; color:black;">Signature&nbsp;</span>
 								</div>
-								<input type="text" class="form-control form-control-sm" placeholder="" style="background-color: white;border-top:none;border-left:none;border-right:none;border-color: green;border-radius: 0;" name="signature" disabled>
+								<input type="text" class="form-control form-control-sm" style="background-color: white;border-top:none;border-left:none;border-right:none;border-color: green;border-radius: 0;" name="signature" disabled>
 							</div>
 							<div class="input-group mt-1">
 								<div class="input-group-prepend">
@@ -909,68 +871,112 @@ include 'mycon.php';
 				</div><!--close row-->
 			</div><!--close col-->
 			<!-- To be filled -->
-			<div class="row" style="border: 2px solid green; border-top: none;">
-    <div class="col p-2">
-        <h6 style="font-weight:bold;">TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</h6>
-        
-        <div style="display: flex; font-weight: bold; margin-bottom: 2px; padding-left: 5px;">
-            <div style="width: 7%;">8</div>
-            <div style="width: 7%;">9</div>
-            <div style="width: 10%;">11</div>
-            <div style="width: 27%; text-align: center;">13</div>
-            <div style="width: 7%; margin-left: 5px;">15</div>
-            <div style="width: 7%;">16</div>
-            <div style="width: 10%;">17</div>
-            <div style="width: 25%; text-align: center;">19</div>
-        </div>
-
-        <div class="flex-container">
-            <div><input type="text" name="8a" disabled></div>
-            <div class="section-gap"><input type="text" name="8b" disabled></div>
-            
-            <div><input type="text" name="9a" disabled></div>
-            <div class="section-gap"><input type="text" name="9b" disabled></div>
-            
-            <div><input type="text" name="11a" disabled></div>
-            <div><input type="text" name="11b" disabled></div>
-            <div class="section-gap"><input type="text" name="11c" disabled></div>
-            
-            <div><input type="text" name="13a" disabled></div>
-            <div><input type="text" name="13b" disabled></div>
-            <div><input type="text" name="13c" disabled></div>
-            <div><input type="text" name="13d" disabled></div>
-            <div><input type="text" name="13e" disabled></div>
-            <div><input type="text" name="13f" disabled></div>
-            <div><input type="text" name="13g" disabled></div>
-            <div class="section-gap"><input type="text" name="13h" disabled></div>
-
-            <div><input type="text" name="15a" disabled></div>
-            <div class="section-gap"><input type="text" name="15b" disabled></div>
-
-            <div><input type="text" name="16a" disabled></div>
-            <div class="section-gap"><input type="text" name="16b" disabled></div>
-
-            <div><input type="text" name="17a" disabled></div>
-            <div><input type="text" name="17b" disabled></div>
-            <div class="section-gap"><input type="text" name="17c" disabled></div>
-
-            <div><input type="text" name="19a" disabled></div>
-            <div><input type="text" name="19b" disabled></div>
-            <div><input type="text" name="19c" disabled></div>
-            <div><input type="text" name="19d" disabled></div>
-            <div><input type="text" name="19e" disabled></div>
-            <div><input type="text" name="19f" disabled></div>
-            <div><input type="text" name="19g" disabled></div>
-            <div><input type="text" name="19h" disabled></div>
-        </div>
-    </div>
-</div>
-			
+			<div class="row" style="border: 2px solid green;border-top:none;">
+				<div class="col">
+					<div class="row">
+						<div class="col">
+							<h6 style="padding-top:2px; font-weight:bold;">TO BE FILLED-UP AT THE OFFICE OF THE CIVIL REGISTRAR</h6>
+							<h6 style="margin-bottom: 0;">8&emsp;&emsp;&emsp;&nbsp;&nbsp;9&emsp;&emsp;&emsp;&nbsp;&nbsp;11&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;13&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;15&emsp;&emsp;&emsp;&nbsp;16&emsp;&emsp;&emsp;17&emsp;&emsp;&emsp;&emsp;&emsp;19</h6>
+							<div class="flex-container">
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="8a" disabled>
+								</div>
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="8b" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="9a" disabled>
+								</div>
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="9b" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="11a" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="11b" disabled>
+								</div> 
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="11c" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="13a" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="13b" disabled>
+								</div> 
+								<div>
+									<input type="text" class="form-control form-control-sm" name="13c" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="13d" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="13e" disabled>
+								</div> 
+								<div>
+									<input type="text" class="form-control form-control-sm" name="13f" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="13g" disabled>
+								</div>
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="13h" disabled>
+								</div> 
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="15a" disabled>
+								</div>
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="15b" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="16a" disabled>
+								</div> 
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="16b" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="17a" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="17b" disabled>
+								</div> 
+								<div style="margin-right: 3px;">
+									<input type="text" class="form-control form-control-sm" name="17c" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="19a" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="19b" disabled>
+								</div> 
+								<div>
+									<input type="text" class="form-control form-control-sm" name="19c" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="19d" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="19e" disabled>
+								</div> 
+								<div>
+									<input type="text" class="form-control form-control-sm" name="19f" disabled>
+								</div>
+								<div style="border-right:none;">
+									<input type="text" class="form-control form-control-sm" name="19g" disabled>
+								</div>
+								<div>
+									<input type="text" class="form-control form-control-sm" name="19h" disabled>
+								</div>  
+							</div>
+						</div>
+					</div><!--close row-->
+				</div><!--close row-->
+			</div><!--close col-->		
 		</div>
 	</div>
 
-	<!-- Javascript -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	<!-- NEW: Auto-fill 5b with "NOT APPLICABLE" when 5a is "SINGLE" -->
 	<script>
 		$(document).ready(function(){
@@ -1142,42 +1148,6 @@ include 'mycon.php';
 	</script>
 
 	<script>
-		document.getElementById("birth_day").addEventListener("keydown", function (e) {
-			if (e.key === "Enter") {
-				e.preventDefault();
-				formatDate();
-			}
-		});
-
-		function formatDate() {
-			const el = document.getElementById("birth_day");
-			let v = el.value.trim();
-			if (!v) return;
-
-			v = v.replace(/[\/\.\s]+/g, "-").replace(/-+/g, "-");
-			const parts = v.split("-");
-			if (parts.length !== 3) return invalid(el);
-
-			const d = parseInt(parts[0], 10);
-			const m = parseInt(parts[1], 10);
-			const y = parseInt(parts[2], 10);
-
-			const test = new Date(y, m - 1, d);
-			if (test.getFullYear() !== y || test.getMonth() !== m - 1 || test.getDate() !== d) {
-				return invalid(el);
-			}
-
-			const MON = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
-			el.value = `${d} ${MON[m - 1]} ${y}`;
-		}
-
-		function invalid(el){
-			el.value = "Invalid date format";
-			el.select();
-		}
-	</script>
-
-	<script>
 		document.getElementById("marriage_place").addEventListener("keydown", function(event) {
 			if (event.key === "Enter") {
 				document.getElementById("marriage_place").value = document.getElementById("marriage_place").value + " " + "PHILIPPINES";
@@ -1238,44 +1208,24 @@ include 'mycon.php';
 		});
 	</script>
 
-	<!-- Date formatting scripts for other date fields -->
 	<script>
-		// Generic date formatter function
-		function formatDateField(elementId) {
-			let input = document.getElementById(elementId).value.trim();
-			let date;
-			if (input.includes("/")) {
-				let parts = input.split("/");
-				if (parts.length === 3) {
-					let month = parts[0].padStart(2, '0');
-					let day = parts[1].padStart(2, '0');
-					let year = parts[2];
-
-					if (parts[0].length === 4) { 
-						date = new Date(day, month - 1, year);
-					} else {
-						date = new Date(year, month - 1, day);
-					}
+		document.getElementById("father_fname").addEventListener("keydown", function(event) {
+			if (event.key === "Enter") {
+				var tatangfname = document.getElementById("father_fname").value;
+				if ((tatangfname == "UNKNOWN") || (tatangfname == "unknown")) {
+					document.getElementById("father_citizen").value = "Not Applicable";
+					document.getElementById("father_sect").value = "Not Applicable";
+					document.getElementById("father_occupation").value = "Not Applicable";
+					document.getElementById("father_brgy").value = "Not Applicable";
+					document.getElementById("father_city").value = "Not Applicable";
+					document.getElementById("father_province").value = "Not Applicable";
+					document.getElementById("marriage_place").value = "Not Applicable";
+					document.getElementById("marriage_date").value = "Not Applicable";
+					document.getElementById("father_country").value = "Not Applicable";
+					document.getElementById("father_age").value = "N/A";
+					document.getElementById("father_lname").value = "";
 				}
 			}
-
-			if (date instanceof Date && !isNaN(date)) {
-				let formattedDay = date.getDate();
-				let formattedMonth = date.toLocaleString('en-US', { month: 'long' });
-				let formattedYear = date.getFullYear();
-				document.getElementById(elementId).value = `${formattedMonth.toUpperCase()} ${formattedDay}, ${formattedYear}`;
-			} else if(input.includes("/")){
-				document.getElementById(elementId).value = "Invalid date format";
-			}
-		}
-
-		// Add event listeners for all date fields
-		['attendant_date', 'informant_date', 'prepared_date', 'received_date', 'civil_date'].forEach(function(id){
-			document.getElementById(id).addEventListener("keydown", function(event) {
-				if (event.key === "Enter") {
-					formatDateField(id);
-				}
-			});
 		});
 	</script>
 
@@ -1294,6 +1244,7 @@ include 'mycon.php';
 			}
 		});
 	</script>
+
 
 <script>
 				$(document).ready(function() {
@@ -1315,10 +1266,10 @@ include 'mycon.php';
 			});
 		});
 </script>
-                       
+
 <script>
 $(document).ready(function() {
-    // Function to collect data from Page 1 and save to browser memory
+
     function saveToMemory() {
         const data = {
             child_fname: $('#child_fname').val(),
@@ -1342,11 +1293,17 @@ $(document).ready(function() {
 			civil_name: $('#civil_name').val(),
 			civil_position: $('#civil_position').val(),
 
+			informant_name: $('#informant_name').val(),
+			informant_address: $('#informant_address').val(),
+
+			attendant_name: $('#attendant_name').val(),
+
+			attendant_address1: $('#attendant_address1') .val(),
 			rel_child: $('#rel_child').val()
         };
         localStorage.setItem('birth_form_data', JSON.stringify(data));
     }
-
+ 
     $('input').on('input', saveToMemory);
 });
 </script>
@@ -1363,6 +1320,7 @@ $(document).ready(function() {
 		}
 	});
 </script>
+
 
 </body>
 </html>
