@@ -46,6 +46,53 @@ include 'mycon.php';
 		.editable-select input {
 			width: 100%;
 		}
+
+						/* Container for each dropdown item */
+		/* Container for each dropdown item */
+		.remark-item {
+			padding: 6px 12px;
+			cursor: pointer;
+			border-bottom: 1px solid #eee;
+			display: flex;
+			align-items: center; /* Vertically centers the text and button */
+			background: white;
+		}
+
+		.remark-item:hover {
+			background-color: #9ebee3; /* A clearly darker gray for better visibility */
+		}
+
+		/* The text handles the expansion */
+		.remark-item .remark-text {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px !important;
+			text-transform: uppercase;
+			color: #000000;
+			flex-grow: 1; /* Pushes the delete button to the right */
+			margin-right: 15px;
+			pointer-events: auto;
+		}
+
+		/* The DELETE button remains small */
+		.delete-remark {
+			color: #dc3545;
+			font-weight: bold;
+			padding: 2px 8px;
+			border: 1px solid #dc3545;
+			border-radius: 3px;
+			cursor: pointer;
+			font-size: 9px !important;
+			text-transform: uppercase;
+			flex-shrink: 0; /* Prevents the button from stretching */
+			display: inline-block;
+			transition: all 0.2s;
+		}
+
+		.delete-remark:hover {
+			background-color: #bd2130;
+			color: white;
+		}
+
 	</style>
 
 	<script type="text/javascript">
@@ -713,7 +760,7 @@ include 'mycon.php';
 								</div>
 								<?php date_default_timezone_set('Asia/Manila'); ?>
 								<!-- UPDATED: Default to current date but editable -->
-								<input type="text" class="form-control form-control-sm" id="attendant_date" name="attendant_date" value="<?php echo strtoupper(date('F j, Y')); ?>">
+								<input type="text" class="form-control form-control-sm" id="attendant_date" name="attendant_date" >
 							</div>
 						</div>
 					</div><!--close row-->
@@ -755,7 +802,7 @@ include 'mycon.php';
 									<span class="input-group-text" style="padding:0;border:none; background-color:white; color:black;">Date&nbsp;</span>
 								</div>
 								<!-- UPDATED: Default to current date but editable -->
-								<input type="text" class="form-control form-control-sm" id="informant_date" name="informant_date" value="<?php echo strtoupper(date('F j, Y')); ?>">
+								<input type="text" class="form-control form-control-sm" id="informant_date" name="informant_date" >
 							</div>
 						</div>
 						<div class="col-6">
@@ -783,7 +830,7 @@ include 'mycon.php';
 									<span class="input-group-text" style="padding:0;border:none; background-color:white; color:black;">Date&nbsp;</span>
 								</div>
 								<!-- UPDATED: Default to current date but editable -->
-								<input type="text" class="form-control form-control-sm" id="prepared_date" name="prepared_date" value="<?php echo strtoupper(date('F j, Y')); ?>">
+								<input type="text" class="form-control form-control-sm" id="prepared_date" name="prepared_date">
 							</div>
 						</div>
 					</div><!--close row-->
@@ -818,7 +865,7 @@ include 'mycon.php';
 									<span class="input-group-text" style="padding:0;border:none; background-color:white; color:black;">Date&nbsp;</span>
 								</div>
 								<!-- UPDATED: Default to current date but editable -->
-								<input type="text" class="form-control form-control-sm" id="received_date" name="received_date" value="<?php echo strtoupper(date('F j, Y')); ?>">
+								<input type="text" class="form-control form-control-sm" id="received_date" name="received_date">
 							</div>
 						</div>
 						<div class="col-6">
@@ -846,7 +893,7 @@ include 'mycon.php';
 									<span class="input-group-text" style="padding:0;border:none; background-color:white; color:black;">Date&nbsp;</span>
 								</div>
 								<!-- UPDATED: Default to current date but editable -->
-								<input type="text" class="form-control form-control-sm" id="civil_date" name="civil_date" value="<?php echo strtoupper(date('F j, Y')); ?>">
+								<input type="text" class="form-control form-control-sm" id="civil_date" name="civil_date">
 							</div>
 						</div>
 					</div><!--close row-->
@@ -855,13 +902,21 @@ include 'mycon.php';
 			<!-- Remarks -->
 			<div class="row" style="border: 2px solid green;border-top:none;">
 				<div class="col">
-					<div class="row">
-						<div class="col">
+					<div class="row" style="border: 2px solid green; border-top:none;">
+						<div class="col" style="position: relative;">
 							<h6 style="padding-top:2px; font-weight:bold;">REMARKS/ANNOTATIONS (For LCRO/OCRG Use Only)</h6>
-							<textarea style="width: 100%; height: 80px;" id="r"></textarea>
+							
+							<textarea style="width: 100%; height: 80px;" id="r" class="form-control" placeholder="Type your remarks here..."></textarea>
+							
+							<div id="remark-dropdown" style="display:none; position:absolute; left:15px; right:15px; background:white; border:1px solid #ccc; z-index:1000; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-height: 150px; overflow-y: auto;">
+								</div>
+
 							<textarea style="width: 100%; height: 80px; display: none;" name="remarks" id="re"></textarea>
 						</div>
-					</div><!--close row-->
+					</div>
+				</div>
+			</div> <!--remark close-->
+			
 					<script>
 						$(document).ready(function(){
 							$("#r").keyup(function(){
@@ -1212,6 +1267,101 @@ include 'mycon.php';
 		});
 	</script>
 
+	<script>//remark function
+$(document).ready(function() {
+    const remarkStorageKey = 'remark_history_log';
+
+    function getHistory() {
+        const raw = localStorage.getItem(remarkStorageKey);
+        return raw ? JSON.parse(raw) : [];
+    }
+
+    // 1. Show Suggestions with Delete Buttons
+    function showDropdown() {
+        const history = getHistory();
+        const dropdown = $('#remark-dropdown');
+        const inputVal = $('#r').val().toUpperCase();
+
+        if (history.length === 0) {
+            dropdown.hide();
+            return;
+        }
+
+        const filtered = history.filter(item => item.includes(inputVal));
+
+        if (filtered.length > 0) {
+            let html = '';
+           filtered.forEach((item, index) => {
+					html += `
+						<div class="remark-item">
+							<span class="remark-text">${item}</span>
+							<span class="delete-remark" data-index="${history.indexOf(item)}">DELETE</span>
+						</div>`;
+				});
+            dropdown.html(html).show();
+        } else {
+            dropdown.hide();
+        }
+    }
+
+    // 2. Handle Deleting a Remark
+    $(document).on('click', '.delete-remark', function(e) {
+        e.stopPropagation(); // Prevents the textarea from filling when clicking delete
+        
+        const indexToRemove = $(this).data('index');
+        let history = getHistory();
+        
+        if (confirm("Delete this remark from history?")) {
+            history.splice(indexToRemove, 1);
+            localStorage.setItem(remarkStorageKey, JSON.stringify(history));
+            showDropdown(); // Refresh the list
+        }
+    });
+
+    // 3. Selection from Dropdown (Updated selector)
+    $(document).on('click', '.remark-item', function() {
+        const selectedText = $(this).data('text');
+        $('#r').val(selectedText);
+        $('#remark-dropdown').hide();
+        
+        const formatted = selectedText.replace(/  /g, "[sp][sp]").replace(/\n/g, "[nl]");
+        $('#re').val(formatted);
+    });
+
+    // Listeners
+    $('#r').on('input focus', showDropdown);
+
+    // Existing Enter Key Listener to Store Data
+    $('#r').on('keydown', function(e) {
+        if (e.key === "Enter") {
+            const val = $(this).val().trim().toUpperCase();
+            if (val === "") return;
+
+            let history = getHistory();
+            if (!history.includes(val)) {
+                history.push(val);
+                if (history.length > 10) history.shift();
+                localStorage.setItem(remarkStorageKey, JSON.stringify(history));
+            }
+
+            const formatted = val.replace(/  /g, "[sp][sp]").replace(/\n/g, "[nl]");
+            $('#re').val(formatted);
+            $('#remark-dropdown').hide();
+        }
+    });
+
+    // Close dropdown if clicking outside
+    $(document).on('click', function(e) {
+        if (!$(e.target).closest('.col').length) {
+            $('#remark-dropdown').hide();
+        }
+    });
+});
+
+	</script>	
+
+
+
 	<script>
 		document.getElementById("father_fname").addEventListener("keydown", function(event) {
 			if (event.key === "Enter") {
@@ -1249,7 +1399,6 @@ include 'mycon.php';
 		});
 	</script>
 
-
 <script>
 		$(document).ready(function() {
 
@@ -1273,42 +1422,43 @@ include 'mycon.php';
 
 <script>
 $(document).ready(function() {
-
     function saveToMemory() {
-        const data = {
+        // 1. Get current form values
+        const newData = {
             child_fname: $('#child_fname').val(),
             child_mname: $('#child_mname').val(),
             child_lname: $('#child_lname').val(),
-
             father_fname: $('#father_fname').val(),
             father_mname: $('#father_mname').val(),
             father_lname: $('#father_lname').val(),
-
             mother_fname: $('input[name="mother_fname"]').val(),
             mother_mname: $('input[name="mother_mname"]').val(),
             mother_lname: $('#mother_lname').val(),
-
-            birth_day: $('input[name="birth_day"]').val(),
+            birth_day: $('#birth_day').val(),
             birth_place: ($('#birth_brgy').val() + " " + $('#birth_city').val() + " " + $('#birth_province').val()).trim(),
-
-			marriage_date: $('#marriage_date').val(), 
-        	marriage_place: $('#marriage_place').val(),
-
-			civil_name: $('#civil_name').val(),
-			civil_position: $('#civil_position').val(),
-
-			informant_name: $('#informant_name').val(),
-			informant_address: $('#informant_address').val(),
-
-			attendant_name: $('#attendant_name').val(),
-
-			attendant_address1: $('#attendant_address1') .val(),
-			rel_child: $('#rel_child').val()
+            marriage_date: $('#marriage_date').val(), 
+            marriage_place: $('#marriage_place').val(),
+            civil_name: $('#civil_name').val(),
+            civil_position: $('#civil_position').val(),
+            informant_name: $('#informant_name').val(),
+            informant_address: $('#informant_address').val(),
+            rel_child: $('#rel_child').val()
         };
-        localStorage.setItem('birth_form_data', JSON.stringify(data));
+
+        // 2. Retrieve existing data to compare
+        const rawOldData = localStorage.getItem('birth_form_data');
+        const oldData = rawOldData ? JSON.parse(rawOldData) : {}; // Use JSON.parse to turn string into data
+
+        // 3. Prevent duplication: Compare stringified versions
+        if (JSON.stringify(newData) !== JSON.stringify(oldData)) {
+            localStorage.setItem('birth_form_data', JSON.stringify(newData));
+            // Trigger log refresh only if data is new
+            if (typeof refreshLog === "function") refreshLog();
+        }
     }
- 
-    $('input').on('input', saveToMemory);
+
+    // Trigger save only on blur (leaving the box) or change to reduce unnecessary processing
+    $('input').on('blur change', saveToMemory);
 });
 </script>
 
@@ -1325,6 +1475,48 @@ $(document).ready(function() {
 	});
 </script>
 
+<script>
+
+	$(document).ready(function() {
+    // List of IDs that should trigger current date on Enter
+    const dateFieldIds = [
+        'birth_day', 
+        'marriage_date', 
+        'attendant_date', 
+        'informant_date', 
+        'prepared_date', 
+        'received_date', 
+        'civil_date'
+    ];
+
+    // Listen for Enter key on these specific fields
+    $('input').on('keydown', function(e) {
+        if (e.key === "Enter") {
+            const currentId = $(this).attr('id');
+
+            if (dateFieldIds.includes(currentId)) {
+                // If the box is empty, inject current date
+                if ($(this).val().trim() === "") {
+                    e.preventDefault(); // Stop move-to-next-field temporarily
+                    
+                    const now = new Date();
+                    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+                    // Format: FEBRUARY 19, 2026
+                    const formattedDate = now.toLocaleDateString('en-US', options).toUpperCase();
+
+                    $(this).val(formattedDate);
+                    
+                    // Trigger your existing saveToMemory function
+                    if (typeof saveToMemory === "function") {
+                        saveToMemory();
+                    }
+                }
+            }
+        }
+    });
+});
+
+</script>
 
 </body>
 </html>

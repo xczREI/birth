@@ -616,5 +616,41 @@ $(document).ready(function() {
 });
 </script>
 
+<script>
+	$(document).ready(function() {
+    // 1. Create a function to generate suggestions from memory
+    function updateSuggestions() {
+        const raw = localStorage.getItem('birth_form_data');
+        if (!raw) return;
+        
+        const data = JSON.parse(raw); // Converts the stored string back into an object
+        
+        // Loop through all saved data points
+        Object.keys(data).forEach(key => {
+            let val = data[key];
+            if (val && val.trim() !== "") {
+                // Find or create a datalist for this specific input ID
+                let listId = "list_" + key;
+                if ($("#" + listId).length === 0) {
+                    $('body').append(`<datalist id="${listId}"></datalist>`);
+                }
+                
+                // Add the value as an option if it doesn't already exist
+                let datalist = $("#" + listId);
+                if (datalist.find(`option[value='${val.toUpperCase()}']`).length === 0) {
+                    datalist.append(`<option value="${val.toUpperCase()}">`);
+                }
+                
+                // Attach this datalist to its respective input box on Page 2
+                $(`#${key}`).attr('list', listId);
+            }
+        });
+    }
+
+    // 2. Refresh suggestions whenever the page loads
+    updateSuggestions();
+});
+</script>
+
 </body>
 </html>
